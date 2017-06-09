@@ -1,13 +1,16 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace WPMTK
 {
-    internal class UnsafeNativeMethods
+    internal class NativeMethods
     {
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        [DllImport("kernel32.dll")]
+        internal static extern Boolean CloseHandle(IntPtr handle);
     }
 
     public class Process : IDisposable
@@ -19,14 +22,19 @@ namespace WPMTK
         public VAMemory memory;
         private IntPtr hWnd;
         private string window_title;
+        private bool disposed = false;
 
         public Process(string window_title)
+        {
+            this.window_title = window_title;
+        }
+
+        public void Attach()
         {
             if (!SethWnd(window_title)) // true if succeeded
             {
                 throw ProcessNotFoundException;
             }
-            this.window_title = window_title;
             memory = new VAMemory(window_title);
         }
 
@@ -34,7 +42,7 @@ namespace WPMTK
         {
             try
             {
-                hWnd = UnsafeNativeMethods.FindWindow(null, title);
+                hWnd = NativeMethods.FindWindow(null, title);
                 if (hWnd == null)
                 {
                     return false;
@@ -74,9 +82,30 @@ namespace WPMTK
             }
         }
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
-            throw new NotImplementedException();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                // managed resources to dispose
+                if (disposing)
+                {
+                    // none
+                }
+                NativeMethods.CloseHandle(hWnd);
+                hWnd = IntPtr.Zero;
+                disposed = true;
+            }
+        }
+
+        ~Process()
+        {
+            Dispose(false);
         }
     }
 }
