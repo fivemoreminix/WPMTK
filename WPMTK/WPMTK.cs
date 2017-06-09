@@ -24,6 +24,7 @@ namespace WPMTK
 
     public class Process
     {
+        public VAMemory memory;
         public IntPtr hWnd { get; }
         public string window_title { get; }
         Process(string window_title)
@@ -36,6 +37,7 @@ namespace WPMTK
                 Environment.Exit(1);
             }
             this.window_title = window_title;
+            memory = new VAMemory(window_title);
         }
     }
 }
