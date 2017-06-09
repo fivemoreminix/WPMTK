@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPMTK", "WPMTK\WPMTK.csproj", "{468C9DDA-8500-4A9E-938F-4BA5AFA5C42C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{B35A5D9F-F2D9-431A-A6C0-332AF882185D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverlayTest1", "OverlayTest1\OverlayTest1.csproj", "{A5101379-A688-4414-A89A-E0AD61E90F23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B35A5D9F-F2D9-431A-A6C0-332AF882185D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B35A5D9F-F2D9-431A-A6C0-332AF882185D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B35A5D9F-F2D9-431A-A6C0-332AF882185D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5101379-A688-4414-A89A-E0AD61E90F23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5101379-A688-4414-A89A-E0AD61E90F23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5101379-A688-4414-A89A-E0AD61E90F23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5101379-A688-4414-A89A-E0AD61E90F23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
