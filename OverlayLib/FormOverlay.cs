@@ -28,6 +28,7 @@ namespace OverlayTest1 {
         RECT rect;
         private readonly string WINDOW_NAME;
         IntPtr handle;
+        private readonly bool isBorderless;
 
         public struct RECT {
             public int left, top, right, bottom;
@@ -36,17 +37,20 @@ namespace OverlayTest1 {
         Graphics g;
         Pen myPen = new Pen(Color.Red);
 
-        public FormOverlay(string windowName) {
+        public FormOverlay(string windowName, bool isBorderless = false) {
             InitializeComponent();
             WINDOW_NAME = windowName;
             handle = FindWindow(null, WINDOW_NAME);
+            this.isBorderless = isBorderless;
         }
 
         private void FormOverlay_Load(object sender, EventArgs e) {
             this.BackColor = Color.Wheat;
             this.TransparencyKey = Color.Wheat;
             this.TopMost = true;
-            //this.FormBorderStyle = FormBorderStyle.None;
+            if (isBorderless) {
+                this.FormBorderStyle = FormBorderStyle.None;
+            }
 
             int initialStyle = GetWindowLong(this.Handle, -20);
             SetWindowLong(this.Handle, -29, initialStyle | 0x80000 | 0x20);
