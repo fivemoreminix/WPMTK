@@ -80,11 +80,13 @@ namespace Test
         {
             if (comboBox1.SelectedItem == comboBox1.Items[0]) // int
             {
-
+                textBox3.Visible = false;
+                numericUpDown2.Visible = true;
             }
             else if (comboBox1.SelectedItem == comboBox1.Items[1]) // string
             {
-
+                numericUpDown2.Visible = false;
+                textBox3.Visible = true;
             }
         }
 
