@@ -30,6 +30,13 @@ namespace OverlayLib {
         private readonly string WINDOW_NAME;
         IntPtr handle;
         private readonly bool isBorderless;
+        Graphics g;
+        Pen myPen = new Pen(Color.Red);
+        #endregion
+
+        #region Graphic Draw Fields
+        List<Point> points;
+        List<Rectangle> rectangles;
         #endregion
 
         #region Structs
@@ -38,16 +45,18 @@ namespace OverlayLib {
         }
         #endregion
 
-        Graphics g;
-        Pen myPen = new Pen(Color.Red);
-
+        #region Constructor
         public FormOverlay(string windowName, bool isBorderless = false) {
             InitializeComponent();
             WINDOW_NAME = windowName;
             handle = FindWindow(null, WINDOW_NAME);
             this.isBorderless = isBorderless;
+            points = new List<Point>();
+            rectangles = new List<Rectangle>();
         }
+        #endregion
 
+        #region Form Control
         private void FormOverlay_Load(object sender, EventArgs e) {
             this.BackColor = Color.Wheat;
             this.TransparencyKey = Color.Wheat;
@@ -66,11 +75,20 @@ namespace OverlayLib {
         }
 
         private void FormOverlay_Paint(object sender, PaintEventArgs e) {
-            
+
             g = e.Graphics;
             g.DrawRectangle(myPen, 100, 100, 200, 200);
+            
+        }
+        #endregion
+        
+        #region Painting Methods
+        public void RefreshForm() {
+            this.Refresh();
         }
 
+        
+        #endregion
 
     }
 }
