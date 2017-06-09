@@ -1,4 +1,4 @@
-﻿namespace OverlayLib {
+﻿namespace WOTK {
     partial class FormOverlay {
         /// <summary>
         /// Required designer variable.

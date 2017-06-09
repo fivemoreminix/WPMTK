@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPMTK", "WPMTK\WPMTK.csproj", "{468C9DDA-8500-4A9E-938F-4BA5AFA5C42C}"
 EndProject
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverlayTest1", "OverlayTest1\OverlayTest1.csproj", "{A5101379-A688-4414-A89A-E0AD61E90F23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverlayLib", "OverlayLib\OverlayLib.csproj", "{16744261-05D1-4FE6-B694-F038D69BEE1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WOTK", "OverlayLib\WOTK.csproj", "{16744261-05D1-4FE6-B694-F038D69BEE1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

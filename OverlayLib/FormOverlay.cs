@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OverlayLib {
+namespace WOTK {
     public partial class FormOverlay : Form {
         #region DllImport
         [DllImport("user32.dll")]
