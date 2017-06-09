@@ -70,7 +70,7 @@ namespace Test
             try
             {
                 if (proc != null)
-                    proc.changeprocess(textBox2.Text);
+                    proc.Changeprocess(textBox2.Text);
                 else
                     proc = new Process(textBox2.Text); // Process initializer
                 process_title = textBox2.Text;
