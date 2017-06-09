@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WPMTK;
 
 namespace Test
 {
     public partial class Form1 : Form
     {
         private IntPtr address;
+        private string process_title;
+        private Process game;
 
         public Form1()
         {
@@ -51,6 +54,19 @@ namespace Test
         {
             if (button2.Enabled != true)
                 button2.Enabled = true;
+        }
+
+        // set process title
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
         }
     }
 }

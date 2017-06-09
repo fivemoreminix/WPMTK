@@ -44,7 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GDI.cs" />
+    <Compile Include="gdi.cs" />
     <Compile Include="wpmtk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
