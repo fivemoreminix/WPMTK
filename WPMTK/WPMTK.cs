@@ -25,11 +25,17 @@ namespace WPMTK
     public class Process
     {
         public VAMemory memory;
-        public IntPtr hWnd { get; }
-        public string window_title { get; }
+        private IntPtr hWnd;
+        private string window_title;
+
         Process(string window_title)
         {
-            hWnd = Windows.FindWindow(null, window_title);
+            try
+            {
+                if (!sethwnd(window_title)) // true if succeeded
+                    throw new Exception();
+            }
+            catch { throw; }
             if (hWnd == null) // the window could not be found
             {
                 Console.WriteLine("Process \"{0}\" could not be found.\nExiting with code 1...", window_title);
@@ -38,6 +44,54 @@ namespace WPMTK
             }
             this.window_title = window_title;
             memory = new VAMemory(window_title);
+        }
+
+        private bool sethwnd(string title)
+        {
+            try
+            {
+                hWnd = Windows.FindWindow(null, title);
+                if (hWnd == null)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Get the HWND that belongs to this process.
+        /// </summary>
+        /// <returns>IntPtr (HWND)</returns>
+        public IntPtr gethwnd()
+        {
+            return hWnd;
+        }
+
+        /// <summary>
+        /// Changes this object to attach to an entirely different process.
+        /// </summary>
+        /// <param name="proc_title">Name of process to attach to.</param>
+        /// <returns>True if no errors, false if failed to locate new process: returns to same process.</returns>
+        public bool changeprocess(string proc_title)
+        {
+            try
+            {
+                if (sethwnd(proc_title)) // if false, failed
+                {
+                    memory = new VAMemory(proc_title);
+                    window_title = proc_title;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
