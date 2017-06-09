@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace WPMTK
 {
@@ -27,10 +24,20 @@ namespace WPMTK
 
     public class Process
     {
+        public VAMemory memory;
         public IntPtr hWnd { get; }
+        public string window_title { get; }
         Process(string window_title)
         {
             hWnd = Windows.FindWindow(null, window_title);
+            if (hWnd == null) // the window could not be found
+            {
+                Console.WriteLine("Process \"{0}\" could not be found.\nExiting with code 1...", window_title);
+                Thread.Sleep(5000);
+                Environment.Exit(1);
+            }
+            this.window_title = window_title;
+            memory = new VAMemory(window_title);
         }
     }
 }
