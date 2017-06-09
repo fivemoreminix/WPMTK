@@ -62,9 +62,11 @@ namespace OverlayTest1 {
         }
 
         private void FormOverlay_Paint(object sender, PaintEventArgs e) {
+            
             g = e.Graphics;
             g.DrawRectangle(myPen, 100, 100, 200, 200);
-            
         }
+
+
     }
 }
