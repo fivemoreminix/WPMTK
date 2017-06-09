@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{468C9DDA-8500-4A9E-938F-4BA5AFA5C42C}</ProjectGuid>
+    <ProjectGuid>{16744261-05D1-4FE6-B694-F038D69BEE1C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WPMTK</RootNamespace>
-    <AssemblyName>WPMTK</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <RootNamespace>OverlayLib</RootNamespace>
+    <AssemblyName>OverlayLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -33,23 +33,30 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="VAMemory">
-      <HintPath>.\VAMemory.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="gdi.cs" />
-    <Compile Include="wpmtk.cs" />
+    <Compile Include="FormOverlay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOverlay.Designer.cs">
+      <DependentUpon>FormOverlay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Overlay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="README.md" />
+    <EmbeddedResource Include="FormOverlay.resx">
+      <DependentUpon>FormOverlay.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
