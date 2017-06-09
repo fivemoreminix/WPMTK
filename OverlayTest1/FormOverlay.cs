@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OverlayTest1 {
+namespace OverlayLib {
     public partial class FormOverlay : Form {
         RECT rect;
         public const string WINDOW_NAME = "Fallout4";

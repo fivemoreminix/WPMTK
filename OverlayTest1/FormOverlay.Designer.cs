@@ -1,4 +1,4 @@
-﻿namespace OverlayTest1 {
+﻿namespace OverlayLib {
     partial class FormOverlay {
         /// <summary>
         /// Required designer variable.

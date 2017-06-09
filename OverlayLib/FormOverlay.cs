@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OverlayTest1 {
+namespace OverlayLib {
     public partial class FormOverlay : Form {
         #region DllImport
         [DllImport("user32.dll")]
@@ -25,14 +25,18 @@ namespace OverlayTest1 {
         static extern bool GetWindowRect(IntPtr hwnd, out RECT lpRect);
         #endregion
 
+        #region Fields
         RECT rect;
         private readonly string WINDOW_NAME;
         IntPtr handle;
         private readonly bool isBorderless;
+        #endregion
 
+        #region Structs
         public struct RECT {
             public int left, top, right, bottom;
         }
+        #endregion
 
         Graphics g;
         Pen myPen = new Pen(Color.Red);

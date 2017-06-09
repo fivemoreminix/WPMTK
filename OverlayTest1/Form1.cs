@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OverlayTest1 {
+namespace OverlayLib {
     public partial class Form1 : Form {
         FormOverlay frm;
         public Form1() {

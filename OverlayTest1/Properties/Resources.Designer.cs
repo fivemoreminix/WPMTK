@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OverlayTest1.Properties {
+namespace OverlayLib.Properties {
 
 
     /// <summary>
