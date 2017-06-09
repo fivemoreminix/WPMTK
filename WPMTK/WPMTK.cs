@@ -30,7 +30,12 @@ namespace WPMTK
 
         Process(string window_title)
         {
-            hWnd = Windows.FindWindow(null, window_title);
+            try
+            {
+                if (!sethwnd(window_title)) // true if succeeded
+                    throw new Exception();
+            }
+            catch { throw; }
             if (hWnd == null) // the window could not be found
             {
                 Console.WriteLine("Process \"{0}\" could not be found.\nExiting with code 1...", window_title);
