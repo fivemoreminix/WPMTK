@@ -19,8 +19,16 @@ namespace Test
 
         private void button1_Click(object sender, EventArgs e)
         {
+            addressParse(sender, e);
+        }
+
+        private unsafe void addressParse(object sender, EventArgs e) {
             int denars = (int)numericUpDown1.Value;
-            int* addr = int.Parse(textBox1.Text);
+            int* addr = (int*) int.Parse(textBox1.Text);
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+
         }
     }
 }
