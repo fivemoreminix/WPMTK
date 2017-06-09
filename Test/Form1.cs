@@ -46,7 +46,8 @@ namespace Test
         {
             try
             {
-                address = (IntPtr)int.Parse(textBox1.Text);
+                int str_int = (int)new Int32Converter().ConvertFromString(textBox1.Text);
+                address = (IntPtr)str_int;
                 button2.Enabled = false;
             }
             catch
@@ -68,7 +69,12 @@ namespace Test
         {
             try
             {
-                proc.changeprocess(textBox2.Text);
+                if (proc != null)
+                    proc.changeprocess(textBox2.Text);
+                else
+                    proc = new Process(textBox2.Text); // Process initializer
+                process_title = textBox2.Text;
+                label6.Visible = false; // hide the info label
             }
             catch
             {
@@ -80,11 +86,13 @@ namespace Test
         {
             if (comboBox1.SelectedItem == comboBox1.Items[0]) // int
             {
+                label1.Visible = true;
                 textBox3.Visible = false;
                 numericUpDown1.Visible = true;
             }
             else if (comboBox1.SelectedItem == comboBox1.Items[1]) // string
             {
+                label1.Visible = true;
                 numericUpDown1.Visible = false;
                 textBox3.Visible = true;
             }
@@ -100,7 +108,7 @@ namespace Test
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) // sync on
+            if (checkBox1.Checked && address != null && process_title != null) // sync on
             {
                 if (comboBox1.SelectedItem == comboBox1.Items[0]) // int
                     numericUpDown2.Value = proc.memory.ReadInt32(address);

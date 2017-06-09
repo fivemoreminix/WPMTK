@@ -28,7 +28,7 @@ namespace WPMTK
         private IntPtr hWnd;
         private string window_title;
 
-        Process(string window_title)
+        public Process(string window_title)
         {
             try
             {
