@@ -200,7 +200,7 @@ namespace WOTK {
         public FormOverlay(Process process, bool isBorderless = false) {
             InitializeComponent();
             // fields
-            WINDOW_NAME = process.Window_title;
+            WINDOW_NAME = process.GetWindowTitle();
             handle = process.GethWnd();
             this.isBorderless = isBorderless;
             // init shapes
@@ -242,9 +242,8 @@ namespace WOTK {
             }
 
             int initialStyle = NativeMethods.GetWindowLong(this.Handle, -20);
-            NativeMethods.SetWindowLong(this.Handle, -29, initialStyle | 0x80000 | 0x20);
-
-            NativeMethods.GetWindowRect(handle, out rect);
+            NativeMethods.SetWindowLong(this.Handle, -20, initialStyle | 0x80000 | 0x20);
+            NativeMethods.GetWindowRect(this.handle, out rect);
             this.Size = new Size(rect.right - rect.left, rect.bottom - rect.top);
             this.Top = rect.top;
             this.Left = rect.left;

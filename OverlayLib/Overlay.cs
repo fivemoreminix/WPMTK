@@ -37,6 +37,14 @@ namespace WOTK {
             this.process = process;
             formOverlay = new FormOverlay(process, isBorderless);
         }
+
+        public void IsOverlayShown(bool overlaySwitch) {
+            if (overlaySwitch) {
+                formOverlay.Show();
+            } else {
+                formOverlay.Hide();
+            }
+        }
             
         #region Old Constructors
         /*
