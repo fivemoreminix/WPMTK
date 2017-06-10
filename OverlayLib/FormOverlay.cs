@@ -9,12 +9,15 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WPMTK;
 
 namespace WOTK {
     #region Structs
+    /*
     public struct RECT {
         public int left, top, right, bottom;
     }
+    */
 
     /// <summary>
     /// A struct for an arc.
@@ -150,25 +153,11 @@ namespace WOTK {
     /// The overlay form.
     /// </summary>
     public partial class FormOverlay : Form {
-        #region DllImport
-        [DllImport("user32.dll")]
-        static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-
-        [DllImport("user32")]
-        static extern bool GetWindowRect(IntPtr hwnd, out RECT lpRect);
-        #endregion
-
         #region Fields
         private readonly bool isBorderless;
         private readonly string WINDOW_NAME;
         private bool autoUpdate;
-        private RECT rect;
+        private NativeMethods.RECT rect;
         private IntPtr handle;
         private Graphics graphics;
         private Pen myPen;
@@ -211,7 +200,7 @@ namespace WOTK {
         public FormOverlay(string windowName, bool isBorderless = false) {
             InitializeComponent();
             WINDOW_NAME = windowName;
-            handle = FindWindow(null, WINDOW_NAME);
+            handle = NativeMethods.FindWindow(null, WINDOW_NAME);
             this.isBorderless = isBorderless;
             points = new List<PointF>();
             rectangles = new List<RectangleF>();
@@ -249,10 +238,10 @@ namespace WOTK {
                 this.FormBorderStyle = FormBorderStyle.None;
             }
 
-            int initialStyle = GetWindowLong(this.Handle, -20);
-            SetWindowLong(this.Handle, -29, initialStyle | 0x80000 | 0x20);
+            int initialStyle = NativeMethods.GetWindowLong(this.Handle, -20);
+            NativeMethods.SetWindowLong(this.Handle, -29, initialStyle | 0x80000 | 0x20);
 
-            GetWindowRect(handle, out rect);
+            NativeMethods.GetWindowRect(handle, out rect);
             this.Size = new Size(rect.right - rect.left, rect.bottom - rect.top);
             this.Top = rect.top;
             this.Left = rect.left;

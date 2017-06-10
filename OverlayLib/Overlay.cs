@@ -24,8 +24,22 @@ namespace WOTK {
 
     class Overlay {
         private FormOverlay formOverlay;
-        private string windowName;
+        internal WPMTK.Process process;
 
+        public Overlay(WPMTK.Process process)
+        {
+            this.process = process;
+            formOverlay = new FormOverlay(process.window_title, true);
+        }
+
+        public Overlay(WPMTK.Process process, bool isBorderless)
+        {
+            this.process = process;
+            formOverlay = new FormOverlay(process.window_title, isBorderless);
+        }
+            
+        #region Old Constructors
+        /*
         public Overlay() {
             windowName = string.Empty;
             formOverlay = new FormOverlay(windowName, true);
@@ -40,6 +54,8 @@ namespace WOTK {
             this.windowName = windowName;
             formOverlay = new FormOverlay(windowName, isBorderless);
         }
+        */
+        #endregion
 
         public void AddShape(Shapes shape, object structData) {
             switch (shape) {

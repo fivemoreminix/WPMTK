@@ -59,6 +59,11 @@
       <DependentUpon>FormOverlay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WPMTK\WPMTK.csproj">
+      <Project>{468c9dda-8500-4a9e-938f-4ba5afa5c42c}</Project>
+      <Name>WPMTK</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

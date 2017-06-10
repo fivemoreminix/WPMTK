@@ -5,14 +5,6 @@ using System.Threading;
 
 namespace WPMTK
 {
-    internal class NativeMethods
-    {
-        [DllImport("user32.dll", SetLastError = true)]
-        internal static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-        [DllImport("kernel32.dll")]
-        internal static extern Boolean CloseHandle(IntPtr handle);
-    }
-
     public class Process : IDisposable
     {
         public static Exception ProcessNotFoundException = new Exception(
@@ -21,7 +13,7 @@ namespace WPMTK
             "E.x. \"Mount&Blade\".");
         public VAMemory memory;
         private IntPtr hWnd;
-        private string window_title;
+        public string window_title { get; }
         private bool disposed = false;
 
         public Process(string window_title)
@@ -29,6 +21,7 @@ namespace WPMTK
             this.window_title = window_title;
         }
 
+        #region hWnd & VAMemory
         public void Attach()
         {
             if (!SethWnd(window_title)) // true if succeeded
@@ -37,7 +30,7 @@ namespace WPMTK
             }
             memory = new VAMemory(window_title);
         }
-
+        
         private bool SethWnd(string title)
         {
             try
@@ -81,7 +74,9 @@ namespace WPMTK
                 throw ProcessNotFoundException;
             }
         }
+        #endregion
 
+        #region Disposal
         public void Dispose()
         {
             Dispose(true);
@@ -107,5 +102,6 @@ namespace WPMTK
         {
             Dispose(false);
         }
+        #endregion
     }
 }
