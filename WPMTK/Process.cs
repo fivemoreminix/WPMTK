@@ -2,6 +2,9 @@
 
 namespace WPMTK
 {
+    /// <summary>
+    /// A Process object defines the attributes of a running windowed application on your computer.
+    /// </summary>
     public class Process : IDisposable
     {
         public static Exception ProcessNotFoundException = new Exception(
@@ -19,6 +22,7 @@ namespace WPMTK
             this.windowTitle = window_title;
         }
 
+        #region Getters
         /// <summary>
         /// Retrieve the window title of the process.
         /// </summary>
@@ -28,13 +32,22 @@ namespace WPMTK
             return windowTitle;
         }
 
+        /// <summary>
+        /// Uses NativeMethods.GetWindowRect() to retrieve the RECT of the process's main window.
+        /// </summary>
+        /// <returns>NativeMethods.RECT</returns>
         public NativeMethods.RECT GetWindowRect()
         {
             NativeMethods.GetWindowRect(hWnd, out NativeMethods.RECT rect);
             return rect;
         }
+        #endregion
 
         #region hWnd & VAMemory
+        /// <summary>
+        /// Before any memory can be used, or overlays can be drawn, the process must be attached. Should be within a "try" block.
+        /// </summary>
+        /// <exception cref="ProcessNotFoundException"></exception>
         public void Attach()
         {
             if (!SethWnd(windowTitle)) // true if succeeded
