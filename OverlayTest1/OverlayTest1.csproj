@@ -89,5 +89,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OverlayLib\WOTK.csproj">
+      <Project>{16744261-05d1-4fe6-b694-f038d69bee1c}</Project>
+      <Name>WOTK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WPMTK\WPMTK.csproj">
+      <Project>{468c9dda-8500-4a9e-938f-4ba5afa5c42c}</Project>
+      <Name>WPMTK</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
