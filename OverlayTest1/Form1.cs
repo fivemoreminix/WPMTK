@@ -17,7 +17,7 @@ namespace OverlayLib {
         public Form1() {
             WPMTK.Process process = new WPMTK.Process("Snipping Tool");
             process.Attach();
-            frm = new WOTK.Overlay(process);
+            frm = new WOTK.Overlay(process, false);
             InitializeComponent();
         }
 

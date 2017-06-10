@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace OverlayLib {
     public partial class FormOverlay : Form {
         RECT rect;
-        public const string WINDOW_NAME = "Fallout4";
+        public const string WINDOW_NAME = "Snipping Tool";
         IntPtr handle = FindWindow(null, WINDOW_NAME);
 
         public struct RECT {

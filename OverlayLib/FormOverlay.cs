@@ -408,7 +408,8 @@ namespace WOTK {
                 WindowState = FormWindowState.Minimized;
             } else {
                 WindowState = FormWindowState.Normal;
-                Location = new Point(rect.left + 10, rect.top + 10);
+                //Location = new Point(rect.left + 10, rect.top + 10);
+                Location = new Point(rect.left, rect.top);
             }
         }
     }

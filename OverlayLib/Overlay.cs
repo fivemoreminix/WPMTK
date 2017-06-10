@@ -34,7 +34,7 @@ namespace WOTK {
         public Overlay(WPMTK.Process process)
         {
             this.process = process;
-            FormOverlay = new FormOverlay(process, true);
+            FormOverlay = new FormOverlay(process, false);
         }
 
         public Overlay(WPMTK.Process process, bool isBorderless)
