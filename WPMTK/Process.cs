@@ -1,7 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Runtime.InteropServices;
-using System.Threading;
 
 namespace WPMTK
 {
@@ -13,22 +10,31 @@ namespace WPMTK
             "E.x. \"Mount&Blade\".");
         public VAMemory memory;
         private IntPtr hWnd;
-        public string window_title { get; }
+        private string windowTitle;
         private bool disposed = false;
 
         public Process(string window_title)
         {
-            this.window_title = window_title;
+            this.windowTitle = window_title;
+        }
+
+        /// <summary>
+        /// Retrieve the window title of the process.
+        /// </summary>
+        /// <returns></returns>
+        public string GetWindowTitle()
+        {
+            return windowTitle;
         }
 
         #region hWnd & VAMemory
         public void Attach()
         {
-            if (!SethWnd(window_title)) // true if succeeded
+            if (!SethWnd(windowTitle)) // true if succeeded
             {
                 throw ProcessNotFoundException;
             }
-            memory = new VAMemory(window_title);
+            memory = new VAMemory(windowTitle);
         }
         
         private bool SethWnd(string title)
@@ -67,7 +73,7 @@ namespace WPMTK
             if (SethWnd(window_title)) // if false, failed
             {
                 memory = new VAMemory(window_title);
-                this.window_title = window_title;
+                windowTitle = window_title;
             }
             else
             {
