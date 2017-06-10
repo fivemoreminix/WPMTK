@@ -28,6 +28,12 @@ namespace WPMTK
             return windowTitle;
         }
 
+        public NativeMethods.RECT GetWindowRect()
+        {
+            NativeMethods.GetWindowRect(hWnd, out NativeMethods.RECT rect);
+            return rect;
+        }
+
         #region hWnd & VAMemory
         public void Attach()
         {

@@ -154,11 +154,11 @@ namespace WOTK {
     /// </summary>
     public partial class FormOverlay : Form {
         #region Fields
+        private Process process; // WINDOW_TITLE and handle have been replaced by GetWindowTitle() and GethWnd()
+                                 // Also, there's a new function within Process: GetWindowRect() returns RECT
         private readonly bool isBorderless;
-        private readonly string WINDOW_NAME;
         private bool autoUpdate;
         private NativeMethods.RECT rect;
-        private IntPtr handle;
         private Graphics graphics;
         private Pen myPen;
         #endregion
@@ -200,8 +200,6 @@ namespace WOTK {
         public FormOverlay(Process process, bool isBorderless = false) {
             InitializeComponent();
             // fields
-            WINDOW_NAME = process.GetWindowTitle();
-            handle = process.GethWnd();
             this.isBorderless = isBorderless;
             // init shapes
             points = new List<PointF>();
@@ -243,7 +241,7 @@ namespace WOTK {
 
             int initialStyle = NativeMethods.GetWindowLong(this.Handle, -20);
             NativeMethods.SetWindowLong(this.Handle, -20, initialStyle | 0x80000 | 0x20);
-            NativeMethods.GetWindowRect(this.handle, out rect);
+            rect = process.GetWindowRect();
             this.Size = new Size(rect.right - rect.left, rect.bottom - rect.top);
             this.Top = rect.top;
             this.Left = rect.left;
@@ -401,9 +399,9 @@ namespace WOTK {
         #endregion
 
         private void timer1_Tick(object sender, EventArgs e) {
-            IntPtr hWnd = NativeMethods.FindWindow(null, WINDOW_NAME);
-            NativeMethods.RECT rect;
-            NativeMethods.GetWindowRect(hWnd, out rect);
+            //IntPtr hWnd = NativeMethods.FindWindow(null, process.GetWindowTitle());
+            //NativeMethods.GetWindowRect(hWnd, out rect);
+            NativeMethods.RECT rect = process.GetWindowRect();
             if (rect.left == -32000) {
                 // the game is minimized
                 this.WindowState = FormWindowState.Minimized;
