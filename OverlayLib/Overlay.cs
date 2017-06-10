@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WOTK {
-    enum Shapes {
+    public enum Shapes {
         Rectangle,
         Arc,
         Bezier,
@@ -22,27 +22,32 @@ namespace WOTK {
         String
     }
 
-    class Overlay {
+    public class Overlay {
         private FormOverlay formOverlay;
         internal WPMTK.Process process;
+
+        /// <summary>
+        /// In case you want to edit the form manually, you can do it here.
+        /// </summary>
+        public FormOverlay FormOverlay { get => formOverlay; set => formOverlay = value; }
 
         public Overlay(WPMTK.Process process)
         {
             this.process = process;
-            formOverlay = new FormOverlay(process, true);
+            FormOverlay = new FormOverlay(process, true);
         }
 
         public Overlay(WPMTK.Process process, bool isBorderless)
         {
             this.process = process;
-            formOverlay = new FormOverlay(process, isBorderless);
+            FormOverlay = new FormOverlay(process, isBorderless);
         }
 
         public void IsOverlayShown(bool overlaySwitch) {
             if (overlaySwitch) {
-                formOverlay.Show();
+                FormOverlay.Show();
             } else {
-                formOverlay.Hide();
+                FormOverlay.Hide();
             }
         }
             
@@ -69,89 +74,90 @@ namespace WOTK {
             switch (shape) {
                 case Shapes.Rectangle:
                     if (structData is RectangleF) {
-                        formOverlay.AddRectangle((RectangleF)structData);
+                        FormOverlay.AddRectangle((RectangleF)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.Arc:
                     if (structData is Arc) {
-                        formOverlay.AddArc((Arc)structData);
+                        FormOverlay.AddArc((Arc)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.Bezier:
                     if (structData is PointF) {
-                        formOverlay.AddBezier((PointF)structData);
+                        FormOverlay.AddBezier((PointF)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.ClosedCurve:
                     if (structData is ClosedCurve) {
-                        formOverlay.AddClosedCurve((ClosedCurve)structData);
+                        FormOverlay.AddClosedCurve((ClosedCurve)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.Curve:
                     if (structData is Curve) {
-                        formOverlay.AddCurve((Curve)structData);
+                        FormOverlay.AddCurve((Curve)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.Ellipse:
                     if (structData is RectangleF) {
-                        formOverlay.AddEllipse((RectangleF)structData);
+                        FormOverlay.AddEllipse((RectangleF)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.Icon:
                     if (structData is IconStruct) {
-                        formOverlay.AddIcon((IconStruct)structData);
+                        FormOverlay.AddIcon((IconStruct)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.Image:
                     if (structData is ImageStruct) {
-                        formOverlay.AddImage((ImageStruct)structData);
+                        FormOverlay.AddImage((ImageStruct)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.GraphicPath:
                     if (structData is GraphicsPath) {
-                        formOverlay.AddGraphicsPaths((GraphicsPath)structData);
+                        FormOverlay.AddGraphicsPaths((GraphicsPath)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.Pie:
                     if (structData is Pie) {
-                        formOverlay.AddPie((Pie)structData);
+                        FormOverlay.AddPie((Pie)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.Polygon:
                     if (structData is Polygon) {
-                        formOverlay.AddPolygon((Polygon)structData);
+                        FormOverlay.AddPolygon((Polygon)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.String:
                     if (structData is StringStruct) {
-                        formOverlay.AddString((StringStruct)structData);
+                        FormOverlay.AddString((StringStruct)structData);
                     } else {
                         throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
             }
+            formOverlay.RefreshForm();
         }
 
 

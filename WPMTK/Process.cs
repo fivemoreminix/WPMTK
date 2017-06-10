@@ -99,7 +99,11 @@ namespace WPMTK
                 {
                     // none
                 }
-                NativeMethods.CloseHandle(hWnd);
+                try {
+                    NativeMethods.CloseHandle(hWnd);
+                } catch (Exception ex) {
+                    Environment.FailFast(ex.Message);
+                }
                 hWnd = IntPtr.Zero;
                 disposed = true;
             }

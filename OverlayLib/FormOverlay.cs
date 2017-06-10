@@ -400,5 +400,17 @@ namespace WOTK {
         }
         #endregion
 
+        private void timer1_Tick(object sender, EventArgs e) {
+            IntPtr hWnd = NativeMethods.FindWindow(null, WINDOW_NAME);
+            NativeMethods.RECT rect;
+            NativeMethods.GetWindowRect(hWnd, out rect);
+            if (rect.left == -32000) {
+                // the game is minimized
+                this.WindowState = FormWindowState.Minimized;
+            } else {
+                this.WindowState = FormWindowState.Normal;
+                this.Location = new Point(rect.left + 10, rect.top + 10);
+            }
+        }
     }
 }

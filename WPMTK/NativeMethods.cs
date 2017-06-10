@@ -5,6 +5,7 @@ namespace WPMTK
 {
     public static class NativeMethods
     {
+        [StructLayout(LayoutKind.Sequential)]
         public struct RECT
         {
             public int left, top, right, bottom;
