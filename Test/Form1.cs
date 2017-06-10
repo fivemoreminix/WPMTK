@@ -21,6 +21,7 @@ namespace Test
         {
             InitializeComponent();
             button1.Enabled = false;
+            timer1.Enabled = true;
         }
 
         // set address's value (int/string)
@@ -70,7 +71,7 @@ namespace Test
             try
             {
                 if (proc != null)
-                    proc.Changeprocess(textBox2.Text);
+                    proc.ChangeProcess(textBox2.Text);
                 else
                     proc = new Process(textBox2.Text); // Process initializer
                 process_title = textBox2.Text;
@@ -98,17 +99,9 @@ namespace Test
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox1.Checked)
-                timer1.Enabled = true;
-            else
-                timer1.Enabled = false;
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (checkBox1.Checked && address != null && process_title != null) // sync on
+            if (address != null && process_title != null) // sync is available
             {
                 if (comboBox1.SelectedItem == comboBox1.Items[0]) // int
                     numericUpDown2.Value = proc.memory.ReadInt32(address);
