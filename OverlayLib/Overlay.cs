@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,28 +46,68 @@ namespace WOTK {
                 case Shapes.Rectangle:
                     if (structData is RectangleF) {
                         formOverlay.AddRectangle((RectangleF)structData);
+                    } else {
+                        throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.Arc:
                     if (structData is Arc) {
                         formOverlay.AddArc((Arc)structData);
+                    } else {
+                        throw new InvalidOperationException("structData object does not match the required object.");
                     }
                     break;
                 case Shapes.Bezier:
+                    if (structData is PointF) {
+                        formOverlay.AddBezier((PointF)structData);
+                    } else {
+                        throw new InvalidOperationException("structData object does not match the required object.");
+                    }
                     break;
                 case Shapes.ClosedCurve:
+                    if (structData is ClosedCurve) {
+                        formOverlay.AddClosedCurve((ClosedCurve)structData);
+                    } else {
+                        throw new InvalidOperationException("structData object does not match the required object.");
+                    }
                     break;
                 case Shapes.Curve:
+                    if (structData is Curve) {
+
+                    } else {
+                        throw new InvalidOperationException("structData object does not match the required object.");
+                    }
                     break;
                 case Shapes.Ellipse:
+                    if (structData is RectangleF) {
+
+                    } else {
+                        throw new InvalidOperationException("structData object does not match the required object.");
+                    }
                     break;
                 case Shapes.Icon:
+                    if (structData is IconStruct) {
+
+                    } else {
+                        throw new InvalidOperationException("structData object does not match the required object.");
+                    }
                     break;
                 case Shapes.Image:
+                    if (structData is ImageStruct) {
+
+                    } else {
+                        throw new InvalidOperationException("structData object does not match the required object.");
+                    }
                     break;
                 case Shapes.GraphicPath:
+                    if (structData is GraphicsPath) {
+
+                    } else {
+                        throw new InvalidOperationException("structData object does not match the required object.");
+                    }
                     break;
                 case Shapes.Pie:
+
                     break;
                 case Shapes.Polygon:
                     break;
