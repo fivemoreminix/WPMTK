@@ -202,12 +202,12 @@ namespace WOTK {
         public Pen MyPen { get => myPen; set => myPen = value; }
         #endregion
 
+        #region Constructor
         /// <summary>
         /// The overlay's constructor.
         /// </summary>
         /// <param name="windowName">The name of the program's window</param>
         /// <param name="isBorderless">In case you want the overlay borderless</param>
-        #region Constructor
         public FormOverlay(string windowName, bool isBorderless = false) {
             InitializeComponent();
             WINDOW_NAME = windowName;
