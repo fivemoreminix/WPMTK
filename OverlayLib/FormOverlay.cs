@@ -200,7 +200,7 @@ namespace WOTK {
         public FormOverlay(Process process, bool isBorderless = false) {
             InitializeComponent();
             // fields
-            WINDOW_NAME = process.window_title;
+            WINDOW_NAME = process.Window_title;
             handle = process.GethWnd();
             this.isBorderless = isBorderless;
             // init shapes
@@ -216,6 +216,7 @@ namespace WOTK {
             pies = new List<Pie>();
             polygons = new List<Polygon>();
             strings = new List<StringStruct>();
+            images = new List<ImageStruct>();
             MyPen = new Pen(Color.Red);
         }
 
@@ -251,39 +252,39 @@ namespace WOTK {
 
         private void FormOverlay_Paint(object sender, PaintEventArgs e) {
             graphics = e.Graphics;
-            graphics.DrawRectangles(MyPen, rectangles.ToArray());
-            graphics.DrawLines(MyPen, points.ToArray());
-            graphics.DrawBeziers(MyPen, beziers.ToArray());
-            graphicsPaths.ForEach(graphicsPath => { graphics.DrawPath(MyPen, graphicsPath); });
-            polygons.ForEach(polygon => { graphics.DrawPolygon(MyPen, polygon.points.ToArray()); });
-            strings.ForEach(text => {
+            if (rectangles.Count == 0) graphics.DrawRectangles(MyPen, rectangles.ToArray());
+            if (points.Count == 0) graphics.DrawLines(MyPen, points.ToArray());
+            if (beziers.Count == 0) graphics.DrawBeziers(MyPen, beziers.ToArray());
+            if (graphicsPaths.Count == 0) graphicsPaths.ForEach(graphicsPath => { graphics.DrawPath(MyPen, graphicsPath); });
+            if (polygons.Count == 0) polygons.ForEach(polygon => { graphics.DrawPolygon(MyPen, polygon.points.ToArray()); });
+            if (strings.Count == 0) strings.ForEach(text => {
                 graphics.DrawString(text.text, text.font, text.brush, text.location);
             });
-            pies.ForEach(pie => {
+            if (pies.Count == 0) pies.ForEach(pie => {
                 graphics.DrawPie(MyPen, pie.rectangle, pie.startAngle, pie.sweepAngle);
             });
-            ellipses.ForEach(ellipse => {
+            if (ellipses.Count == 0) ellipses.ForEach(ellipse => {
                 graphics.DrawEllipse(MyPen, ellipse);
             });
-            arcs.ForEach(arc => { 
-                graphics.DrawArc(MyPen, arc.x, arc.y, arc.width, 
+            if (arcs.Count == 0) arcs.ForEach(arc => {
+                graphics.DrawArc(MyPen, arc.x, arc.y, arc.width,
                     arc.height, arc.startAngle, arc.sweepAngle);
             });
-            curves.ForEach(curve => {
+            if (curves.Count == 0) curves.ForEach(curve => {
                 graphics.DrawCurve(MyPen, curve.points.ToArray(), curve.offset,
                     curve.numberOfSegments, curve.tension);
             });
-            closedCurves.ForEach(closedCurve => {
+            if (closedCurves.Count == 0) closedCurves.ForEach(closedCurve => {
                 graphics.DrawClosedCurve(MyPen, closedCurve.points.ToArray());
             });
-            icons.ForEach(icon => {
+            if (icons.Count == 0) icons.ForEach(icon => {
                 if (icon.isUnstretched) {
                     graphics.DrawIconUnstretched(icon.icon, icon.rectangle);
                 } else {
                     graphics.DrawIcon(icon.icon, icon.rectangle);
                 }
             });
-            images.ForEach(image => {
+            if (images.Count == 0) images.ForEach(image => {
                 if (image.ifClipped && image.ifUnscaled) {
                     graphics.DrawImageUnscaledAndClipped(image.image, image.rectangle);
                 } else if (image.ifUnscaled) {

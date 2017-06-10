@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using WOTK;
+
 namespace OverlayLib {
     public partial class Form1 : Form {
-        FormOverlay frm;
+        WOTK.FormOverlay frm;
         public Form1() {
-            frm = new FormOverlay();
+            frm = new WOTK.FormOverlay(new WPMTK.Process("Notepad"));
             InitializeComponent();
         }
 
@@ -22,6 +24,10 @@ namespace OverlayLib {
             } else {
                 frm.Hide();
             }
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
 
         }
     }
