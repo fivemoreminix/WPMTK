@@ -11,6 +11,126 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WOTK {
+    #region Structs
+    public struct RECT {
+        public int left, top, right, bottom;
+    }
+
+    /// <summary>
+    /// A struct for an arc.
+    /// </summary>
+    public struct Arc {
+        public float x, y, width, height, startAngle, sweepAngle;
+
+        public Arc(float x, float y, float width,
+            float height, float startAngle, float sweepAngle) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+            this.startAngle = startAngle;
+            this.sweepAngle = sweepAngle;
+        }
+    }
+
+    /// <summary>
+    /// A struct for a closed curve.
+    /// </summary>
+    public struct ClosedCurve {
+        public List<PointF> points;
+
+        public ClosedCurve(List<PointF> points) {
+            this.points = points;
+        }
+    }
+
+    /// <summary>
+    /// A struct for a curve.
+    /// </summary>
+    public struct Curve {
+        public List<PointF> points;
+        public int offset, numberOfSegments;
+        public float tension;
+
+        public Curve(List<PointF> points, int offset, int numberOfSegments,
+            float tension) {
+            this.points = points;
+            this.offset = offset;
+            this.numberOfSegments = numberOfSegments;
+            this.tension = tension;
+        }
+    }
+
+    public struct IconStruct {
+        public Icon icon;
+        public Rectangle rectangle;
+        public bool isUnstretched;
+
+        public IconStruct(Icon icon, Rectangle rectangle, bool isUnstretched) {
+            this.icon = icon;
+            this.rectangle = rectangle;
+            this.isUnstretched = isUnstretched;
+        }
+    }
+
+    public struct ImageStruct {
+        public Image image;
+        public Rectangle rectangle;
+        public bool ifUnscaled;
+        public bool ifClipped;
+
+        public ImageStruct(Image image, Rectangle rectangle,
+            bool ifUnscaled, bool ifClipped) {
+            this.image = image;
+            this.rectangle = rectangle;
+            this.ifUnscaled = ifUnscaled;
+            if (ifClipped) {
+                this.ifUnscaled = true;
+                this.ifClipped = true;
+            } else {
+                this.ifClipped = false;
+            }
+        }
+    }
+
+    public struct Pie {
+        public RectangleF rectangle;
+        public float startAngle;
+        public float sweepAngle;
+
+        public Pie(RectangleF rectangle, float startAngle, float sweepAngle) {
+            this.rectangle = rectangle;
+            this.startAngle = startAngle;
+            this.sweepAngle = sweepAngle;
+        }
+    }
+
+    public struct Polygon {
+        public List<PointF> points;
+
+        public Polygon(List<PointF> points) {
+            this.points = points;
+        }
+    }
+
+    public struct StringStruct {
+        public string text;
+        public Font font;
+        public Brush brush;
+        public PointF location;
+        public StringFormat format;
+
+        public StringStruct(string text, Font font, Brush brush,
+            PointF location, StringFormat format) {
+            this.text = text;
+            this.font = font;
+            this.brush = brush;
+            this.location = location;
+            this.format = format;
+        }
+    }
+    #endregion
+
     /// <summary>
     /// The overlay form.
     /// </summary>
@@ -60,126 +180,6 @@ namespace WOTK {
         /// Checks if the form should update for every change
         /// </summary>
         public bool AutoRefresh { get => autoUpdate; set => autoUpdate = value; }
-        #endregion
-
-        #region Structs
-        private struct RECT {
-            public int left, top, right, bottom;
-        }
-
-        /// <summary>
-        /// A struct for an arc.
-        /// </summary>
-        public struct Arc {
-            public float x, y, width, height, startAngle, sweepAngle;
-
-            public Arc(float x, float y, float width, 
-                float height, float startAngle, float sweepAngle) {
-                this.x = x;
-                this.y = y;
-                this.width = width;
-                this.height = height;
-                this.startAngle = startAngle;
-                this.sweepAngle = sweepAngle;
-            }
-        }
-        
-        /// <summary>
-        /// A struct for a closed curve.
-        /// </summary>
-        public struct ClosedCurve {
-            public List<PointF> points;
-            
-            public ClosedCurve(List<PointF> points) {
-                this.points = points;
-            }
-        }
-
-        /// <summary>
-        /// A struct for a curve.
-        /// </summary>
-        public struct Curve {
-            public List<PointF> points;
-            public int offset, numberOfSegments;
-            public float tension;
-
-            public Curve(List<PointF> points, int offset, int numberOfSegments,
-                float tension) {
-                this.points = points;
-                this.offset = offset;
-                this.numberOfSegments = numberOfSegments;
-                this.tension = tension;
-            }
-        }
-
-        public struct IconStruct {
-            public Icon icon;
-            public Rectangle rectangle;
-            public bool isUnstretched;
-
-            public IconStruct(Icon icon, Rectangle rectangle, bool isUnstretched) {
-                this.icon = icon;
-                this.rectangle = rectangle;
-                this.isUnstretched = isUnstretched;
-            }
-        }
-
-        public struct ImageStruct {
-            public Image image;
-            public Rectangle rectangle;
-            public bool ifUnscaled;
-            public bool ifClipped;
-
-            public ImageStruct(Image image, Rectangle rectangle, 
-                bool ifUnscaled, bool ifClipped) {
-                this.image = image;
-                this.rectangle = rectangle;
-                this.ifUnscaled = ifUnscaled;
-                if (ifClipped) {
-                    this.ifUnscaled = true;
-                    this.ifClipped = true;
-                } else {
-                    this.ifClipped = false;
-                }
-            }
-        }
-
-        public struct Pie {
-            public RectangleF rectangle;
-            public float startAngle;
-            public float sweepAngle;
-
-            public Pie(RectangleF rectangle, float startAngle, float sweepAngle) {
-                this.rectangle = rectangle;
-                this.startAngle = startAngle;
-                this.sweepAngle = sweepAngle;
-            }
-        }
-
-        public struct Polygon {
-            public List<PointF> points;
-
-            public Polygon(List<PointF> points) {
-                this.points = points;
-            }
-        }
-
-        public struct StringStruct {
-            public string text;
-            public Font font;
-            public Brush brush;
-            public PointF location;
-            public StringFormat format;
-
-            public StringStruct(string text, Font font, Brush brush, 
-                PointF location, StringFormat format) {
-                this.text = text;
-                this.font = font;
-                this.brush = brush;
-                this.location = location;
-                this.format = format;
-            }
-        }
         #endregion
 
         /// <summary>
@@ -283,26 +283,42 @@ namespace WOTK {
             this.Refresh();
         }
 
+        /// <summary>
+        /// Refresh the form, based on the update check.
+        /// </summary>
         private void RefreshFormChecked() {
             if (autoUpdate) {
                 RefreshForm();
             }
         }
 
+        /// <summary>
+        /// Adds a rectangle to the form.
+        /// </summary>
+        /// <param name="rectangle">The float version of Rectangle class</param>
         public void AddRectangle(RectangleF rectangle) {
             rectangles.Add(rectangle);
             RefreshFormChecked();
         }
         
+        /// <summary>
+        /// Adds a linear line to the form.
+        /// </summary>
+        /// <param name="point">The float version of Point class</param>
         public void AddLine(PointF point) {
             points.Add(point);
             RefreshFormChecked();
         }
 
+        /// <summary>
+        /// Adds an arc representing a portion of an eclipse.
+        /// </summary>
+        /// <param name="arc">Arc class</param>
         public void AddArc(Arc arc) {
             arcs.Add(arc);
             RefreshFormChecked();
         }
+
 
         public void AddBezier(PointF bezier) {
             beziers.Add(bezier);
@@ -344,11 +360,19 @@ namespace WOTK {
             RefreshFormChecked();
         }
 
+        /// <summary>
+        /// Adds a polygon shape.
+        /// </summary>
+        /// <param name="polygon">Polygon class</param>
         public void AddPolygon(Polygon polygon) {
             polygons.Add(polygon);
             RefreshFormChecked();
         }
 
+        /// <summary>
+        /// Adds a string of text.
+        /// </summary>
+        /// <param name="text">StringStruct class</param>
         public void AddString(StringStruct text) {
             strings.Add(text);
             RefreshFormChecked();
