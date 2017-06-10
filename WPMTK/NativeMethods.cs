@@ -11,9 +11,9 @@ namespace WPMTK
         }
 
         #region DLL Includes
-        [DllImport("user32.dll")]
+        [DllImport("user32")]
         public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32", SetLastError = true)]
         public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
         [DllImport("user32")]
         public static extern bool GetWindowRect(IntPtr hwnd, out RECT lpRect);
