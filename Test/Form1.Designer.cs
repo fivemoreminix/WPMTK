@@ -32,28 +32,28 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.addressNewSet = new System.Windows.Forms.Button();
+            this.addressBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.addressSet = new System.Windows.Forms.Button();
+            this.addressCurrentNum = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.addressNewBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.processTitleInfo = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.dataTypeBox = new System.Windows.Forms.ComboBox();
+            this.processTitleSet = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.processTitleBox = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolbarAddressDropdown = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolbarOverlayDropdown = new System.Windows.Forms.ToolStripDropDownButton();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addressCurrentNum)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -87,25 +87,25 @@
             this.label1.Text = "value to set to";
             this.label1.Visible = false;
             // 
-            // button1
+            // addressNewSet
             // 
-            this.button1.Location = new System.Drawing.Point(131, 113);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "set";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.addressNewSet.Location = new System.Drawing.Point(131, 113);
+            this.addressNewSet.Name = "addressNewSet";
+            this.addressNewSet.Size = new System.Drawing.Size(37, 23);
+            this.addressNewSet.TabIndex = 2;
+            this.addressNewSet.Text = "set";
+            this.addressNewSet.UseVisualStyleBackColor = true;
+            this.addressNewSet.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // addressBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 20);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "0x00000000";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.addressBox.Location = new System.Drawing.Point(6, 35);
+            this.addressBox.Name = "addressBox";
+            this.addressBox.Size = new System.Drawing.Size(120, 20);
+            this.addressBox.TabIndex = 3;
+            this.addressBox.Text = "0x00000000";
+            this.addressBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.addressBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -116,33 +116,33 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "address for manipulation";
             // 
-            // button2
+            // addressSet
             // 
-            this.button2.Location = new System.Drawing.Point(132, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(35, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "set";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.addressSet.Location = new System.Drawing.Point(132, 33);
+            this.addressSet.Name = "addressSet";
+            this.addressSet.Size = new System.Drawing.Size(35, 23);
+            this.addressSet.TabIndex = 5;
+            this.addressSet.Text = "set";
+            this.addressSet.UseVisualStyleBackColor = true;
+            this.addressSet.Click += new System.EventHandler(this.button2_Click);
             // 
-            // numericUpDown2
+            // addressCurrentNum
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(6, 74);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.addressCurrentNum.Location = new System.Drawing.Point(6, 74);
+            this.addressCurrentNum.Maximum = new decimal(new int[] {
             999999999,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.addressCurrentNum.Minimum = new decimal(new int[] {
             999999999,
             0,
             0,
             -2147483648});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.ReadOnly = true;
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown2.TabIndex = 6;
+            this.addressCurrentNum.Name = "addressCurrentNum";
+            this.addressCurrentNum.ReadOnly = true;
+            this.addressCurrentNum.Size = new System.Drawing.Size(120, 20);
+            this.addressCurrentNum.TabIndex = 6;
             // 
             // label3
             // 
@@ -155,15 +155,15 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.addressNewBox);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.addressNewSet);
+            this.groupBox1.Controls.Add(this.addressBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.numericUpDown1);
-            this.groupBox1.Controls.Add(this.numericUpDown2);
+            this.groupBox1.Controls.Add(this.addressCurrentNum);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.addressSet);
             this.groupBox1.Location = new System.Drawing.Point(181, 28);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(177, 147);
@@ -171,22 +171,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Address";
             // 
-            // textBox3
+            // addressNewBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(5, 116);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(120, 20);
-            this.textBox3.TabIndex = 12;
-            this.textBox3.Visible = false;
+            this.addressNewBox.Location = new System.Drawing.Point(5, 116);
+            this.addressNewBox.Name = "addressNewBox";
+            this.addressNewBox.Size = new System.Drawing.Size(120, 20);
+            this.addressNewBox.TabIndex = 12;
+            this.addressNewBox.Visible = false;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.processTitleInfo);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.dataTypeBox);
+            this.groupBox2.Controls.Add(this.processTitleSet);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.processTitleBox);
             this.groupBox2.Location = new System.Drawing.Point(12, 28);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(163, 147);
@@ -194,15 +194,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Configuration";
             // 
-            // label6
+            // processTitleInfo
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label6.Location = new System.Drawing.Point(3, 58);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(133, 26);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Set the process title before\r\ndoing anything.";
+            this.processTitleInfo.AutoSize = true;
+            this.processTitleInfo.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.processTitleInfo.Location = new System.Drawing.Point(3, 58);
+            this.processTitleInfo.Name = "processTitleInfo";
+            this.processTitleInfo.Size = new System.Drawing.Size(133, 26);
+            this.processTitleInfo.TabIndex = 12;
+            this.processTitleInfo.Text = "Set the process title before\r\ndoing anything.";
             // 
             // label5
             // 
@@ -213,27 +213,27 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "data type at address";
             // 
-            // comboBox1
+            // dataTypeBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.dataTypeBox.FormattingEnabled = true;
+            this.dataTypeBox.Items.AddRange(new object[] {
             "integer",
             "string"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 116);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 21);
-            this.comboBox1.TabIndex = 10;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.dataTypeBox.Location = new System.Drawing.Point(6, 116);
+            this.dataTypeBox.Name = "dataTypeBox";
+            this.dataTypeBox.Size = new System.Drawing.Size(151, 21);
+            this.dataTypeBox.TabIndex = 10;
+            this.dataTypeBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // button3
+            // processTitleSet
             // 
-            this.button3.Location = new System.Drawing.Point(122, 33);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(35, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "set";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.processTitleSet.Location = new System.Drawing.Point(122, 33);
+            this.processTitleSet.Name = "processTitleSet";
+            this.processTitleSet.Size = new System.Drawing.Size(35, 23);
+            this.processTitleSet.TabIndex = 9;
+            this.processTitleSet.Text = "set";
+            this.processTitleSet.UseVisualStyleBackColor = true;
+            this.processTitleSet.Click += new System.EventHandler(this.button3_Click);
             // 
             // label4
             // 
@@ -244,12 +244,12 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "process title";
             // 
-            // textBox2
+            // processTitleBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 35);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(110, 20);
-            this.textBox2.TabIndex = 0;
+            this.processTitleBox.Location = new System.Drawing.Point(6, 35);
+            this.processTitleBox.Name = "processTitleBox";
+            this.processTitleBox.Size = new System.Drawing.Size(110, 20);
+            this.processTitleBox.TabIndex = 0;
             // 
             // timer1
             // 
@@ -268,31 +268,31 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1,
-            this.toolStripDropDownButton2});
+            this.toolbarAddressDropdown,
+            this.toolbarOverlayDropdown});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(369, 25);
             this.toolStrip1.TabIndex = 14;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripDropDownButton1
+            // toolbarAddressDropdown
             // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(62, 22);
-            this.toolStripDropDownButton1.Text = "Address";
+            this.toolbarAddressDropdown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolbarAddressDropdown.Image = ((System.Drawing.Image)(resources.GetObject("toolbarAddressDropdown.Image")));
+            this.toolbarAddressDropdown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolbarAddressDropdown.Name = "toolbarAddressDropdown";
+            this.toolbarAddressDropdown.Size = new System.Drawing.Size(62, 22);
+            this.toolbarAddressDropdown.Text = "Address";
             // 
-            // toolStripDropDownButton2
+            // toolbarOverlayDropdown
             // 
-            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
-            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(60, 22);
-            this.toolStripDropDownButton2.Text = "Overlay";
+            this.toolbarOverlayDropdown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolbarOverlayDropdown.Image = ((System.Drawing.Image)(resources.GetObject("toolbarOverlayDropdown.Image")));
+            this.toolbarOverlayDropdown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolbarOverlayDropdown.Name = "toolbarOverlayDropdown";
+            this.toolbarOverlayDropdown.Size = new System.Drawing.Size(60, 22);
+            this.toolbarOverlayDropdown.Text = "Overlay";
             // 
             // Form1
             // 
@@ -307,7 +307,7 @@
             this.Text = "WPMTK Test Trainer";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addressCurrentNum)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -323,26 +323,26 @@
 
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button addressNewSet;
+        private System.Windows.Forms.TextBox addressBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Button addressSet;
+        private System.Windows.Forms.NumericUpDown addressCurrentNum;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button processTitleSet;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox processTitleBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox addressNewBox;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox dataTypeBox;
+        private System.Windows.Forms.Label processTitleInfo;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+        private System.Windows.Forms.ToolStripDropDownButton toolbarAddressDropdown;
+        private System.Windows.Forms.ToolStripDropDownButton toolbarOverlayDropdown;
     }
 }
 

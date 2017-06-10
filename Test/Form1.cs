@@ -20,21 +20,21 @@ namespace Test
         public Form1()
         {
             InitializeComponent();
-            button1.Enabled = false;
+            addressNewSet.Enabled = false;
             timer1.Enabled = true;
         }
 
         // set address's value (int/string)
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem == comboBox1.Items[0]) // int
+            if (dataTypeBox.SelectedItem == dataTypeBox.Items[0]) // int
             {
                 int value = (int)numericUpDown1.Value;
                 proc.memory.WriteInt32(address, value);
             }
-            else if (comboBox1.SelectedItem == comboBox1.Items[1]) // string
+            else if (dataTypeBox.SelectedItem == dataTypeBox.Items[1]) // string
             {
-                proc.memory.WriteStringASCII(address, textBox3.Text);
+                proc.memory.WriteStringASCII(address, addressNewBox.Text);
             }
         }
 
@@ -47,22 +47,22 @@ namespace Test
         {
             try
             {
-                int str_int = (int)new Int32Converter().ConvertFromString(textBox1.Text);
+                int str_int = (int)new Int32Converter().ConvertFromString(addressBox.Text);
                 address = (IntPtr)str_int;
-                button2.Enabled = false;
+                addressSet.Enabled = false;
             }
             catch
             {
-                MessageBox.Show("\"" + textBox1.Text + "\" is not recognized as a valid memory address.", "Address Error!");
+                MessageBox.Show("\"" + addressBox.Text + "\" is not recognized as a valid memory address.", "Address Error!");
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (button1.Enabled != true)
-                button1.Enabled = true;
-            if (button2.Enabled != true)
-                button2.Enabled = true;
+            if (addressNewSet.Enabled != true)
+                addressNewSet.Enabled = true;
+            if (addressSet.Enabled != true)
+                addressSet.Enabled = true;
         }
 
         // set process title
@@ -71,11 +71,11 @@ namespace Test
             try
             {
                 if (proc != null)
-                    proc.ChangeProcess(textBox2.Text);
+                    proc.ChangeProcess(processTitleBox.Text);
                 else
-                    proc = new Process(textBox2.Text); // Process initializer
-                process_title = textBox2.Text;
-                label6.Visible = false; // hide the info label
+                    proc = new Process(processTitleBox.Text); // Process initializer
+                process_title = processTitleBox.Text;
+                processTitleInfo.Visible = false; // hide the info label
             }
             catch
             {
@@ -85,17 +85,17 @@ namespace Test
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem == comboBox1.Items[0]) // int
+            if (dataTypeBox.SelectedItem == dataTypeBox.Items[0]) // int
             {
                 label1.Visible = true;
-                textBox3.Visible = false;
+                addressNewBox.Visible = false;
                 numericUpDown1.Visible = true;
             }
-            else if (comboBox1.SelectedItem == comboBox1.Items[1]) // string
+            else if (dataTypeBox.SelectedItem == dataTypeBox.Items[1]) // string
             {
                 label1.Visible = true;
                 numericUpDown1.Visible = false;
-                textBox3.Visible = true;
+                addressNewBox.Visible = true;
             }
         }
 
@@ -103,10 +103,10 @@ namespace Test
         {
             if (address != null && process_title != null) // sync is available
             {
-                if (comboBox1.SelectedItem == comboBox1.Items[0]) // int
-                    numericUpDown2.Value = proc.memory.ReadInt32(address);
-                else if (comboBox1.SelectedItem == comboBox1.Items[1]) // string
-                    textBox3.Text = proc.memory.ReadStringASCII(address, 0);
+                if (dataTypeBox.SelectedItem == dataTypeBox.Items[0]) // int
+                    addressCurrentNum.Value = proc.memory.ReadInt32(address);
+                else if (dataTypeBox.SelectedItem == dataTypeBox.Items[1]) // string
+                    addressNewBox.Text = proc.memory.ReadStringASCII(address, 0);
             }
         }
     }
