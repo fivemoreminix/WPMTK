@@ -14,8 +14,8 @@ namespace Test
     public partial class Form1 : Form
     {
         private IntPtr address;
-        private string process_title;
         private Process proc;
+        private OverlaySettings overlaySettings;
 
         public Form1()
         {
@@ -61,8 +61,6 @@ namespace Test
         {
             if (addressNewSet.Enabled != true)
                 addressNewSet.Enabled = true;
-            if (addressSet.Enabled != true)
-                addressSet.Enabled = true;
         }
 
         // set process title
@@ -74,7 +72,6 @@ namespace Test
                     proc.ChangeProcess(processTitleBox.Text);
                 else
                     proc = new Process(processTitleBox.Text); // Process initializer
-                process_title = processTitleBox.Text;
                 processTitleInfo.Visible = false; // hide the info label
             }
             catch
@@ -101,7 +98,7 @@ namespace Test
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (address != null && process_title != null) // sync is available
+            if (address != null && proc != null) // sync is available
             {
                 if (dataTypeBox.SelectedItem == dataTypeBox.Items[0]) // int
                     addressCurrentNum.Value = proc.memory.ReadInt32(address);
@@ -117,6 +114,21 @@ namespace Test
                 proc.Attach();
             else
                 MessageBox.Show("No process specified for attaching to.");
+        }
+
+        // Overlay Settings
+        private void toolbarOverlayButton_Click(object sender, EventArgs e)
+        {
+            if (overlaySettings != null && !overlaySettings.IsDisposed) // hasn't been closed yet, just unfocused
+                overlaySettings.Show();
+            else // the form had been closed, reopen it
+            {
+                if (proc != null)
+                {
+                    overlaySettings = new OverlaySettings(proc);
+                    overlaySettings.Show();
+                }
+            }
         }
     }
 }
