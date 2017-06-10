@@ -107,9 +107,18 @@ namespace WOTK {
                     }
                     break;
                 case Shapes.Pie:
+                    if (structData is Pie) {
 
+                    } else {
+                        throw new InvalidOperationException("structData object does not match the required object.");
+                    }
                     break;
                 case Shapes.Polygon:
+                    if (structData is Polygon) {
+
+                    } else {
+                        throw new InvalidOperationException("structData object does not match the required object.");
+                    }
                     break;
                 case Shapes.String:
                     break;
