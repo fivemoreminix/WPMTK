@@ -1,14 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WOTK {
-    public class Overlay {
-        private List<string> text;
-        private FormOverlay formOverlay;
+    enum Shapes {
+        Rectangle,
+        Arc,
+        Bezier,
+        ClosedCurve,
+        Curve,
+        Ellipse,
+        Icon,
+        Image,
+        GraphicPath,
+        Pie,
+        Polygon,
+        String
+    }
 
+    class Overlay {
+        private FormOverlay formOverlay;
         private string windowName;
 
         public Overlay() {
@@ -25,6 +39,42 @@ namespace WOTK {
             this.windowName = windowName;
             formOverlay = new FormOverlay(windowName, isBorderless);
         }
+
+        public void AddShape(Shapes shape, object structData) {
+            switch (shape) {
+                case Shapes.Rectangle:
+                    if (structData is RectangleF) {
+                        formOverlay.AddRectangle((RectangleF)structData);
+                    }
+                    break;
+                case Shapes.Arc:
+                    if (structData is Arc) {
+                        formOverlay.AddArc((Arc)structData);
+                    }
+                    break;
+                case Shapes.Bezier:
+                    break;
+                case Shapes.ClosedCurve:
+                    break;
+                case Shapes.Curve:
+                    break;
+                case Shapes.Ellipse:
+                    break;
+                case Shapes.Icon:
+                    break;
+                case Shapes.Image:
+                    break;
+                case Shapes.GraphicPath:
+                    break;
+                case Shapes.Pie:
+                    break;
+                case Shapes.Polygon:
+                    break;
+                case Shapes.String:
+                    break;
+            }
+        }
+
 
 
 
