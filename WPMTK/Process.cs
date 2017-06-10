@@ -36,12 +36,6 @@ namespace WPMTK
                 throw ProcessNotFoundException;
             }
             memory = new VAMemory(windowTitle);
-
-            if (!SethWnd(windowTitle)) // true if succeeded
-            {
-                throw ProcessNotFoundException;
-            }
-            memory = new VAMemory(windowTitle);
         }
         
         private bool SethWnd(string title)
