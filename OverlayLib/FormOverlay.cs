@@ -61,6 +61,9 @@ namespace WOTK {
         }
     }
 
+    /// <summary>
+    /// A struct for an icon.
+    /// </summary>
     public struct IconStruct {
         public Icon icon;
         public Rectangle rectangle;
@@ -73,6 +76,9 @@ namespace WOTK {
         }
     }
 
+    /// <summary>
+    /// A struct for an image.
+    /// </summary>
     public struct ImageStruct {
         public Image image;
         public Rectangle rectangle;
@@ -93,6 +99,9 @@ namespace WOTK {
         }
     }
 
+    /// <summary>
+    /// A struct for a pie shape.
+    /// </summary>
     public struct Pie {
         public RectangleF rectangle;
         public float startAngle;
@@ -105,6 +114,9 @@ namespace WOTK {
         }
     }
 
+    /// <summary>
+    /// A struct for a polygon shape.
+    /// </summary>
     public struct Polygon {
         public List<PointF> points;
 
@@ -113,6 +125,9 @@ namespace WOTK {
         }
     }
 
+    /// <summary>
+    /// A struct for a string.
+    /// </summary>
     public struct StringStruct {
         public string text;
         public Font font;
@@ -195,6 +210,16 @@ namespace WOTK {
             this.isBorderless = isBorderless;
             points = new List<PointF>();
             rectangles = new List<RectangleF>();
+            arcs = new List<Arc>();
+            beziers = new List<PointF>();
+            closedCurves = new List<ClosedCurve>();
+            curves = new List<Curve>();
+            ellipses = new List<RectangleF>();
+            icons = new List<IconStruct>();
+            graphicsPaths = new List<GraphicsPath>();
+            pies = new List<Pie>();
+            polygons = new List<Polygon>();
+            strings = new List<StringStruct>();
             myPen = new Pen(Color.Red);
         }
 
