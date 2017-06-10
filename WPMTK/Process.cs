@@ -10,6 +10,7 @@ namespace WPMTK
             "E.x. \"Mount&Blade\".");
         public VAMemory memory;
         private IntPtr hWnd;
+
         private string windowTitle;
         private bool disposed = false;
 
@@ -30,11 +31,19 @@ namespace WPMTK
         #region hWnd & VAMemory
         public void Attach()
         {
+<<<<<<< HEAD
             if (!SethWnd(windowTitle)) // true if succeeded
             {
                 throw ProcessNotFoundException;
             }
             memory = new VAMemory(windowTitle);
+=======
+            if (!SethWnd(Window_title)) // true if succeeded
+            {
+                throw ProcessNotFoundException;
+            }
+            memory = new VAMemory(Window_title);
+>>>>>>> origin/dev
         }
         
         private bool SethWnd(string title)
