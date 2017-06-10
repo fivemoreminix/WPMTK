@@ -109,5 +109,14 @@ namespace Test
                     addressNewBox.Text = proc.memory.ReadStringASCII(address, 0);
             }
         }
+
+        // Address -> Attach
+        private void attachMenuItem_Click(object sender, EventArgs e)
+        {
+            if (proc != null)
+                proc.Attach();
+            else
+                MessageBox.Show("No process specified for attaching to.");
+        }
     }
 }

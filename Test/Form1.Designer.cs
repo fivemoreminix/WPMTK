@@ -52,6 +52,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolbarAddressDropdown = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolbarOverlayDropdown = new System.Windows.Forms.ToolStripDropDownButton();
+            this.attachMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressCurrentNum)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -279,6 +280,8 @@
             // toolbarAddressDropdown
             // 
             this.toolbarAddressDropdown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolbarAddressDropdown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.attachMenuItem});
             this.toolbarAddressDropdown.Image = ((System.Drawing.Image)(resources.GetObject("toolbarAddressDropdown.Image")));
             this.toolbarAddressDropdown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolbarAddressDropdown.Name = "toolbarAddressDropdown";
@@ -293,6 +296,13 @@
             this.toolbarOverlayDropdown.Name = "toolbarOverlayDropdown";
             this.toolbarOverlayDropdown.Size = new System.Drawing.Size(60, 22);
             this.toolbarOverlayDropdown.Text = "Overlay";
+            // 
+            // attachMenuItem
+            // 
+            this.attachMenuItem.Name = "attachMenuItem";
+            this.attachMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.attachMenuItem.Text = "Attach";
+            this.attachMenuItem.Click += new System.EventHandler(this.attachMenuItem_Click);
             // 
             // Form1
             // 
@@ -343,6 +353,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton toolbarAddressDropdown;
         private System.Windows.Forms.ToolStripDropDownButton toolbarOverlayDropdown;
+        private System.Windows.Forms.ToolStripMenuItem attachMenuItem;
     }
 }
 
