@@ -195,6 +195,11 @@ namespace WOTK {
         /// Checks if the form should update for every change
         /// </summary>
         public bool AutoRefresh { get => autoUpdate; set => autoUpdate = value; }
+
+        /// <summary>
+        /// This is the pen. You are free to use it whenever you wish.
+        /// </summary>
+        public Pen MyPen { get => myPen; set => myPen = value; }
         #endregion
 
         /// <summary>
@@ -220,7 +225,7 @@ namespace WOTK {
             pies = new List<Pie>();
             polygons = new List<Polygon>();
             strings = new List<StringStruct>();
-            myPen = new Pen(Color.Red);
+            MyPen = new Pen(Color.Red);
         }
 
         /// <summary>
@@ -231,7 +236,7 @@ namespace WOTK {
         /// <param name="isBorderless">In case you want the overlay borderless</param>
         public FormOverlay(string windowName, Pen pen, bool isBorderless = false) : 
             this(windowName, isBorderless) {
-            myPen = pen;
+            MyPen = pen;
         }
         #endregion
 
@@ -255,30 +260,30 @@ namespace WOTK {
 
         private void FormOverlay_Paint(object sender, PaintEventArgs e) {
             graphics = e.Graphics;
-            graphics.DrawRectangles(myPen, rectangles.ToArray());
-            graphics.DrawLines(myPen, points.ToArray());
-            graphics.DrawBeziers(myPen, beziers.ToArray());
-            graphicsPaths.ForEach(graphicsPath => { graphics.DrawPath(myPen, graphicsPath); });
-            polygons.ForEach(polygon => { graphics.DrawPolygon(myPen, polygon.points.ToArray()); });
+            graphics.DrawRectangles(MyPen, rectangles.ToArray());
+            graphics.DrawLines(MyPen, points.ToArray());
+            graphics.DrawBeziers(MyPen, beziers.ToArray());
+            graphicsPaths.ForEach(graphicsPath => { graphics.DrawPath(MyPen, graphicsPath); });
+            polygons.ForEach(polygon => { graphics.DrawPolygon(MyPen, polygon.points.ToArray()); });
             strings.ForEach(text => {
                 graphics.DrawString(text.text, text.font, text.brush, text.location);
             });
             pies.ForEach(pie => {
-                graphics.DrawPie(myPen, pie.rectangle, pie.startAngle, pie.sweepAngle);
+                graphics.DrawPie(MyPen, pie.rectangle, pie.startAngle, pie.sweepAngle);
             });
             ellipses.ForEach(ellipse => {
-                graphics.DrawEllipse(myPen, ellipse);
+                graphics.DrawEllipse(MyPen, ellipse);
             });
             arcs.ForEach(arc => { 
-                graphics.DrawArc(myPen, arc.x, arc.y, arc.width, 
+                graphics.DrawArc(MyPen, arc.x, arc.y, arc.width, 
                     arc.height, arc.startAngle, arc.sweepAngle);
             });
             curves.ForEach(curve => {
-                graphics.DrawCurve(myPen, curve.points.ToArray(), curve.offset,
+                graphics.DrawCurve(MyPen, curve.points.ToArray(), curve.offset,
                     curve.numberOfSegments, curve.tension);
             });
             closedCurves.ForEach(closedCurve => {
-                graphics.DrawClosedCurve(myPen, closedCurve.points.ToArray());
+                graphics.DrawClosedCurve(MyPen, closedCurve.points.ToArray());
             });
             icons.ForEach(icon => {
                 if (icon.isUnstretched) {
