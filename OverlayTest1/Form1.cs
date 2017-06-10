@@ -14,7 +14,7 @@ namespace OverlayLib {
     public partial class Form1 : Form {
         WOTK.FormOverlay frm;
         public Form1() {
-            frm = new WOTK.FormOverlay(new WPMTK.Process("Notepad"));
+            frm = new WOTK.FormOverlay(new WPMTK.Process("AudioWizard"));
             InitializeComponent();
         }
 
