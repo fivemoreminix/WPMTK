@@ -197,11 +197,13 @@ namespace WOTK {
         /// </summary>
         /// <param name="windowName">The name of the program's window</param>
         /// <param name="isBorderless">In case you want the overlay borderless</param>
-        public FormOverlay(string windowName, bool isBorderless = false) {
+        public FormOverlay(Process process, bool isBorderless = false) {
             InitializeComponent();
-            WINDOW_NAME = windowName;
-            handle = NativeMethods.FindWindow(null, WINDOW_NAME);
+            // fields
+            WINDOW_NAME = process.window_title;
+            handle = process.GethWnd();
             this.isBorderless = isBorderless;
+            // init shapes
             points = new List<PointF>();
             rectangles = new List<RectangleF>();
             arcs = new List<Arc>();
@@ -223,8 +225,8 @@ namespace WOTK {
         /// <param name="windowName">The name of the program's window</param>
         /// <param name="pen">Your specified pen type</param>
         /// <param name="isBorderless">In case you want the overlay borderless</param>
-        public FormOverlay(string windowName, Pen pen, bool isBorderless = false) : 
-            this(windowName, isBorderless) {
+        public FormOverlay(Process process, Pen pen, bool isBorderless = false) : 
+            this(process, isBorderless) {
             MyPen = pen;
         }
         #endregion
