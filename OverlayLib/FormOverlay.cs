@@ -163,20 +163,24 @@ namespace WOTK {
         private Pen myPen;
         #endregion
 
+        #region Delegates
+        internal MethodDelegate.Update update;
+        #endregion
+
         #region Graphic Draw Fields
-        List<PointF> points;
-        List<RectangleF> rectangles;
-        List<Arc> arcs;
-        List<PointF> beziers;
-        List<ClosedCurve> closedCurves;
-        List<Curve> curves;
-        List<RectangleF> ellipses;
-        List<IconStruct> icons;
-        List<ImageStruct> images;
-        List<GraphicsPath> graphicsPaths;
-        List<Pie> pies;
-        List<Polygon> polygons;
-        List<StringStruct> strings;
+        internal List<PointF> points;
+        internal List<RectangleF> rectangles;
+        internal List<Arc> arcs;
+        internal List<PointF> beziers;
+        internal List<ClosedCurve> closedCurves;
+        internal List<Curve> curves;
+        internal List<RectangleF> ellipses;
+        internal List<IconStruct> icons;
+        internal List<ImageStruct> images;
+        internal List<GraphicsPath> graphicsPaths;
+        internal List<Pie> pies;
+        internal List<Polygon> polygons;
+        internal List<StringStruct> strings;
         #endregion
 
         #region Properties
@@ -292,8 +296,23 @@ namespace WOTK {
                 }
             });
         }
+
+        private void timer1_Tick(object sender, EventArgs e) {
+            //IntPtr hWnd = NativeMethods.FindWindow(null, process.GetWindowTitle());
+            //NativeMethods.GetWindowRect(hWnd, out rect);
+            NativeMethods.RECT rect = process.GetWindowRect();
+            if (rect.left == -32000) {
+                // the game is minimized
+                WindowState = FormWindowState.Minimized;
+            } else {
+                WindowState = FormWindowState.Normal;
+                //Location = new Point(rect.left + 10, rect.top + 10);
+                Location = new Point(rect.left, rect.top);
+            }
+            update(timer1.Interval);
+        }
         #endregion
-        
+
         #region Painting Methods
         /// <summary>
         /// Refresh the overlay/form after painting.
@@ -398,19 +417,5 @@ namespace WOTK {
             RefreshFormChecked();
         }
         #endregion
-
-        private void timer1_Tick(object sender, EventArgs e) {
-            //IntPtr hWnd = NativeMethods.FindWindow(null, process.GetWindowTitle());
-            //NativeMethods.GetWindowRect(hWnd, out rect);
-            NativeMethods.RECT rect = process.GetWindowRect();
-            if (rect.left == -32000) {
-                // the game is minimized
-                WindowState = FormWindowState.Minimized;
-            } else {
-                WindowState = FormWindowState.Normal;
-                //Location = new Point(rect.left + 10, rect.top + 10);
-                Location = new Point(rect.left, rect.top);
-            }
-        }
     }
 }
