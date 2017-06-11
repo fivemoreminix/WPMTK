@@ -75,6 +75,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -98,6 +99,12 @@
       <Project>{468c9dda-8500-4a9e-938f-4ba5afa5c42c}</Project>
       <Name>WPMTK</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\RedBoxFilled.png" />
+    <Content Include="Resources\RedBoxOutlined.png" />
+    <Content Include="Resources\RedCircleFilled.png" />
+    <Content Include="Resources\RedCircleOutlined.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
