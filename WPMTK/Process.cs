@@ -88,7 +88,7 @@ namespace WPMTK
         /// </summary>
         /// <param name="window_title">Name of process to attach to.</param>
         /// <returns>True if no errors, false if failed to locate new process: returns to same process.</returns>
-        public void ChangeProcess(string window_title)
+        /*public void ChangeProcess(string window_title)
         {
             if (SethWnd(window_title)) // if false, failed
             {
@@ -99,7 +99,7 @@ namespace WPMTK
             {
                 throw ProcessNotFoundException;
             }
-        }
+        }*/
         #endregion
 
         #region Disposal

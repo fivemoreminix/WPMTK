@@ -16,12 +16,23 @@ namespace Test
         private IntPtr address;
         private Process process;
         private OverlaySettings overlaySettings;
+        private List<System.Diagnostics.Process> processes = new List<System.Diagnostics.Process>();
 
         public Form1()
         {
             InitializeComponent();
             addressNewSet.Enabled = false;
             timer1.Enabled = true;
+        }
+
+        private void UpdateProcesses()
+        {
+            processes.Clear();
+            foreach (System.Diagnostics.Process proc in System.Diagnostics.Process.GetProcesses())
+            {
+                if (!String.IsNullOrEmpty(proc.MainWindowTitle))
+                    processes.Add(proc);
+            }
         }
 
         // set address's value (int/string)
@@ -63,6 +74,7 @@ namespace Test
                 addressNewSet.Enabled = true;
         }
 
+        /*
         // set process title
         private void button3_Click(object sender, EventArgs e)
         {
@@ -79,6 +91,7 @@ namespace Test
                 MessageBox.Show("Could not attach to that process. The title does not seem to meet any matches.", "Failed changing processes.");
             }
         }
+        */
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -98,6 +111,7 @@ namespace Test
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // update address
             if (address != null && process != null) // sync is available
             {
                 if (dataTypeBox.SelectedItem == dataTypeBox.Items[0]) // int
@@ -133,6 +147,24 @@ namespace Test
                     MessageBox.Show("You must specify a window title for the target process before you can draw an overlay.");
                 }
             }
+        }
+
+        // processBox dropdown is opened
+        private void processBox_DropDown(object sender, EventArgs e)
+        {
+            // update list of selectable processes
+            UpdateProcesses();
+            processBox.Items.Clear();
+            foreach (System.Diagnostics.Process proc in processes)
+            {
+                processBox.Items.Add(proc.MainWindowTitle);
+            }
+        }
+
+        // processBox selection made
+        private void processBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            process = new Process(processes[processBox.SelectedIndex].MainWindowTitle);
         }
     }
 }

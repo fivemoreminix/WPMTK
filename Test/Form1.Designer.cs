@@ -41,12 +41,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.addressNewBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.processBox = new System.Windows.Forms.ComboBox();
             this.processTitleInfo = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataTypeBox = new System.Windows.Forms.ComboBox();
-            this.processTitleSet = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.processTitleBox = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -182,12 +181,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.processBox);
             this.groupBox2.Controls.Add(this.processTitleInfo);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.dataTypeBox);
-            this.groupBox2.Controls.Add(this.processTitleSet);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.processTitleBox);
             this.groupBox2.Location = new System.Drawing.Point(12, 28);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(163, 147);
@@ -195,11 +193,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Configuration";
             // 
+            // processBox
+            // 
+            this.processBox.FormattingEnabled = true;
+            this.processBox.Location = new System.Drawing.Point(6, 35);
+            this.processBox.Name = "processBox";
+            this.processBox.Size = new System.Drawing.Size(151, 21);
+            this.processBox.TabIndex = 13;
+            this.processBox.DropDown += new System.EventHandler(this.processBox_DropDown);
+            this.processBox.SelectedIndexChanged += new System.EventHandler(this.processBox_SelectedIndexChanged);
+            // 
             // processTitleInfo
             // 
             this.processTitleInfo.AutoSize = true;
-            this.processTitleInfo.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.processTitleInfo.Location = new System.Drawing.Point(3, 58);
+            this.processTitleInfo.BackColor = System.Drawing.SystemColors.Control;
+            this.processTitleInfo.ForeColor = System.Drawing.Color.Red;
+            this.processTitleInfo.Location = new System.Drawing.Point(6, 59);
             this.processTitleInfo.Name = "processTitleInfo";
             this.processTitleInfo.Size = new System.Drawing.Size(128, 26);
             this.processTitleInfo.TabIndex = 12;
@@ -226,35 +235,17 @@
             this.dataTypeBox.TabIndex = 10;
             this.dataTypeBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // processTitleSet
-            // 
-            this.processTitleSet.Location = new System.Drawing.Point(122, 33);
-            this.processTitleSet.Name = "processTitleSet";
-            this.processTitleSet.Size = new System.Drawing.Size(35, 23);
-            this.processTitleSet.TabIndex = 9;
-            this.processTitleSet.Text = "set";
-            this.processTitleSet.UseVisualStyleBackColor = true;
-            this.processTitleSet.Click += new System.EventHandler(this.button3_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 13);
+            this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 1;
-            this.label4.Text = "process\'s window title";
-            // 
-            // processTitleBox
-            // 
-            this.processTitleBox.Location = new System.Drawing.Point(6, 35);
-            this.processTitleBox.Name = "processTitleBox";
-            this.processTitleBox.Size = new System.Drawing.Size(110, 20);
-            this.processTitleBox.TabIndex = 0;
+            this.label4.Text = "process";
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // groupBox3
@@ -302,7 +293,7 @@
             this.toolbarOverlayButton.Image = ((System.Drawing.Image)(resources.GetObject("toolbarOverlayButton.Image")));
             this.toolbarOverlayButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolbarOverlayButton.Name = "toolbarOverlayButton";
-            this.toolbarOverlayButton.Size = new System.Drawing.Size(96, 22);
+            this.toolbarOverlayButton.Size = new System.Drawing.Size(96, 19);
             this.toolbarOverlayButton.Text = "Overlay Settings";
             this.toolbarOverlayButton.Click += new System.EventHandler(this.toolbarOverlayButton_Click);
             // 
@@ -345,9 +336,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button processTitleSet;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox processTitleBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox addressNewBox;
         private System.Windows.Forms.Timer timer1;
@@ -358,6 +347,7 @@
         private System.Windows.Forms.ToolStripDropDownButton toolbarAddressDropdown;
         private System.Windows.Forms.ToolStripMenuItem attachMenuItem;
         private System.Windows.Forms.ToolStripButton toolbarOverlayButton;
+        private System.Windows.Forms.ComboBox processBox;
     }
 }
 
