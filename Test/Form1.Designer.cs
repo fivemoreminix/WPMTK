@@ -47,16 +47,20 @@
             this.dataTypeBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolbarAddressDropdown = new System.Windows.Forms.ToolStripDropDownButton();
             this.attachMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbarOverlayButton = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusPID = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusPName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusMachineName = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressCurrentNum)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // numericUpDown1
@@ -118,6 +122,7 @@
             // 
             // addressSet
             // 
+            this.addressSet.Enabled = false;
             this.addressSet.Location = new System.Drawing.Point(132, 33);
             this.addressSet.Name = "addressSet";
             this.addressSet.Size = new System.Drawing.Size(35, 23);
@@ -248,15 +253,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Location = new System.Drawing.Point(12, 181);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(346, 63);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Overlay";
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -283,7 +279,7 @@
             // attachMenuItem
             // 
             this.attachMenuItem.Name = "attachMenuItem";
-            this.attachMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.attachMenuItem.Size = new System.Drawing.Size(152, 22);
             this.attachMenuItem.Text = "Attach";
             this.attachMenuItem.Click += new System.EventHandler(this.attachMenuItem_Click);
             // 
@@ -297,13 +293,45 @@
             this.toolbarOverlayButton.Text = "Overlay Settings";
             this.toolbarOverlayButton.Click += new System.EventHandler(this.toolbarOverlayButton_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusPID,
+            this.statusPName,
+            this.statusMachineName});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 184);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(369, 22);
+            this.statusStrip1.TabIndex = 15;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // statusPID
+            // 
+            this.statusPID.Name = "statusPID";
+            this.statusPID.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.statusPID.Size = new System.Drawing.Size(51, 17);
+            this.statusPID.Text = "procId";
+            // 
+            // statusPName
+            // 
+            this.statusPName.Name = "statusPName";
+            this.statusPName.Size = new System.Drawing.Size(197, 17);
+            this.statusPName.Spring = true;
+            this.statusPName.Text = "procName";
+            // 
+            // statusMachineName
+            // 
+            this.statusMachineName.Name = "statusMachineName";
+            this.statusMachineName.Size = new System.Drawing.Size(85, 17);
+            this.statusMachineName.Text = "machineName";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 256);
+            this.ClientSize = new System.Drawing.Size(369, 206);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -319,6 +347,8 @@
             this.groupBox2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,12 +372,15 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ComboBox dataTypeBox;
         private System.Windows.Forms.Label processTitleInfo;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton toolbarAddressDropdown;
         private System.Windows.Forms.ToolStripMenuItem attachMenuItem;
         private System.Windows.Forms.ToolStripButton toolbarOverlayButton;
         private System.Windows.Forms.ComboBox processBox;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel statusPID;
+        private System.Windows.Forms.ToolStripStatusLabel statusPName;
+        private System.Windows.Forms.ToolStripStatusLabel statusMachineName;
     }
 }
 

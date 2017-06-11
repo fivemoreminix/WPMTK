@@ -13,18 +13,21 @@ namespace Test
 {
     public partial class Form1 : Form
     {
+        #region Fields
         private IntPtr address;
         private Process process;
         private OverlaySettings overlaySettings;
         private List<System.Diagnostics.Process> processes = new List<System.Diagnostics.Process>();
 
+#endregion
+
         public Form1()
         {
             InitializeComponent();
-            addressNewSet.Enabled = false;
             timer1.Enabled = true;
         }
 
+        #region Private Methods
         private void UpdateProcesses()
         {
             processes.Clear();
@@ -34,6 +37,8 @@ namespace Test
                     processes.Add(proc);
             }
         }
+
+#endregion
 
         // set address's value (int/string)
         private void button1_Click(object sender, EventArgs e)
@@ -119,6 +124,24 @@ namespace Test
                 else if (dataTypeBox.SelectedItem == dataTypeBox.Items[1]) // string
                     addressNewBox.Text = process.memory.ReadStringASCII(address, 0);
             }
+
+            // update status strip
+            if (process != null && !String.IsNullOrEmpty(processBox.SelectedText))
+            {
+                statusPID.Text = "PID: " + processes[processBox.SelectedIndex].Id.ToString();
+                statusPID.ToolTipText = statusPID.Text;
+                statusPName.Text = processes[processBox.SelectedIndex].ProcessName;
+                statusPName.ToolTipText = statusPName.Text;
+                statusMachineName.Text = "Paged M. Size: " + processes[processBox.SelectedIndex].PagedMemorySize64.ToString() + " (bytes)";
+                statusMachineName.ToolTipText = statusMachineName.Text;
+            }
+            else
+            {
+                // null everything
+                statusPID.Text = "";
+                statusPName.Text = "";
+                statusMachineName.Text = "";
+            }
         }
 
         // Address -> Attach
@@ -165,6 +188,7 @@ namespace Test
         private void processBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             process = new Process(processes[processBox.SelectedIndex].MainWindowTitle);
+            processTitleInfo.Visible = false;
         }
     }
 }
