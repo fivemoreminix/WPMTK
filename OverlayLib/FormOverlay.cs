@@ -200,6 +200,7 @@ namespace WOTK {
         public FormOverlay(Process process, bool isBorderless = false) {
             InitializeComponent();
             // fields
+            this.process = process;
             this.isBorderless = isBorderless;
             // init shapes
             points = new List<PointF>();
@@ -404,10 +405,10 @@ namespace WOTK {
             NativeMethods.RECT rect = process.GetWindowRect();
             if (rect.left == -32000) {
                 // the game is minimized
-                this.WindowState = FormWindowState.Minimized;
+                WindowState = FormWindowState.Minimized;
             } else {
-                this.WindowState = FormWindowState.Normal;
-                this.Location = new Point(rect.left + 10, rect.top + 10);
+                WindowState = FormWindowState.Normal;
+                Location = new Point(rect.left + 10, rect.top + 10);
             }
         }
     }

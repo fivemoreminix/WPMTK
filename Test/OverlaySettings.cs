@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WOTK;
 
@@ -16,21 +9,31 @@ namespace Test
         WPMTK.Process process; // process
         Overlay overlay; // overlay object
 
+        // constructor
         public OverlaySettings(WPMTK.Process process)
         {
             InitializeComponent();
 
-            overlay = new Overlay(process);
+            try
+            {
+                overlay = new Overlay(process);
+            }
+            catch
+            {
+                MessageBox.Show("Could not create an overlay for the process targeted. Maybe the process changed it\'s window title.");
+                Close();
+            }
             this.process = process;
+            Text = Text+" for "+process.GetWindowTitle();
         }
 
         // show
         private void showBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (showBox.Checked)
-                overlay.IsOverlayShown(true);
-            else
-                overlay.IsOverlayShown(false);
+            overlay.IsOverlayShown(showBox.Checked);
+            timer1.Enabled = showBox.Checked;
+            if (!showBox.Checked)
+                coordinatesStatus.Text = "Overlay not active - check \"show\" box to enable it.";
         }
 
         // borderless
@@ -40,6 +43,15 @@ namespace Test
                 overlay.FormOverlay.FormBorderStyle = FormBorderStyle.None;
             else
                 overlay.FormOverlay.FormBorderStyle = FormBorderStyle.Sizable;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // overlay coordinates
+            System.Drawing.Rectangle bounds = overlay.FormOverlay.DesktopBounds;
+            string coord = "Coordinates(X: " + bounds.X + ", Y: " + bounds.Y +
+                ", W: "+ bounds.Width + ", H: " + bounds.Height + ")";
+            coordinatesStatus.Text = coord;
         }
     }
 }

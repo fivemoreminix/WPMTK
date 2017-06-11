@@ -109,7 +109,7 @@ namespace WPMTK
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        protected unsafe virtual void Dispose(bool disposing)
         {
             if (!disposed)
             {

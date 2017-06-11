@@ -14,7 +14,7 @@ namespace Test
     public partial class Form1 : Form
     {
         private IntPtr address;
-        private Process proc;
+        private Process process;
         private OverlaySettings overlaySettings;
 
         public Form1()
@@ -30,11 +30,11 @@ namespace Test
             if (dataTypeBox.SelectedItem == dataTypeBox.Items[0]) // int
             {
                 int value = (int)numericUpDown1.Value;
-                proc.memory.WriteInt32(address, value);
+                process.memory.WriteInt32(address, value);
             }
             else if (dataTypeBox.SelectedItem == dataTypeBox.Items[1]) // string
             {
-                proc.memory.WriteStringASCII(address, addressNewBox.Text);
+                process.memory.WriteStringASCII(address, addressNewBox.Text);
             }
         }
 
@@ -68,10 +68,10 @@ namespace Test
         {
             try
             {
-                if (proc != null)
-                    proc.ChangeProcess(processTitleBox.Text);
+                if (process != null)
+                    process.ChangeProcess(processTitleBox.Text);
                 else
-                    proc = new Process(processTitleBox.Text); // Process initializer
+                    process = new Process(processTitleBox.Text); // Process initializer
                 processTitleInfo.Visible = false; // hide the info label
             }
             catch
@@ -98,20 +98,20 @@ namespace Test
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (address != null && proc != null) // sync is available
+            if (address != null && process != null) // sync is available
             {
                 if (dataTypeBox.SelectedItem == dataTypeBox.Items[0]) // int
-                    addressCurrentNum.Value = proc.memory.ReadInt32(address);
+                    addressCurrentNum.Value = process.memory.ReadInt32(address);
                 else if (dataTypeBox.SelectedItem == dataTypeBox.Items[1]) // string
-                    addressNewBox.Text = proc.memory.ReadStringASCII(address, 0);
+                    addressNewBox.Text = process.memory.ReadStringASCII(address, 0);
             }
         }
 
         // Address -> Attach
         private void attachMenuItem_Click(object sender, EventArgs e)
         {
-            if (proc != null)
-                proc.Attach();
+            if (process != null)
+                process.Attach();
             else
                 MessageBox.Show("No process specified for attaching to.");
         }
@@ -123,10 +123,14 @@ namespace Test
                 overlaySettings.Show();
             else // the form had been closed, reopen it
             {
-                if (proc != null)
+                if (process != null)
                 {
-                    overlaySettings = new OverlaySettings(proc);
+                    overlaySettings = new OverlaySettings(process);
                     overlaySettings.Show();
+                }
+                else
+                {
+                    MessageBox.Show("You must specify a window title for the target process before you can draw an overlay.");
                 }
             }
         }

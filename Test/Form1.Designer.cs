@@ -241,9 +241,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.Size = new System.Drawing.Size(109, 13);
             this.label4.TabIndex = 1;
-            this.label4.Text = "process title";
+            this.label4.Text = "process\'s window title";
             // 
             // processTitleBox
             // 
@@ -291,7 +291,7 @@
             // attachMenuItem
             // 
             this.attachMenuItem.Name = "attachMenuItem";
-            this.attachMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.attachMenuItem.Size = new System.Drawing.Size(109, 22);
             this.attachMenuItem.Text = "Attach";
             this.attachMenuItem.Click += new System.EventHandler(this.attachMenuItem_Click);
             // 
