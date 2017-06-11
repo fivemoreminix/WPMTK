@@ -54,7 +54,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusPID = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusPName = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusMachineName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusProcessMemory = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressCurrentNum)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -298,7 +298,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusPID,
             this.statusPName,
-            this.statusMachineName});
+            this.statusProcessMemory});
             this.statusStrip1.Location = new System.Drawing.Point(0, 184);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(369, 22);
@@ -315,15 +315,15 @@
             // statusPName
             // 
             this.statusPName.Name = "statusPName";
-            this.statusPName.Size = new System.Drawing.Size(197, 17);
+            this.statusPName.Size = new System.Drawing.Size(187, 17);
             this.statusPName.Spring = true;
             this.statusPName.Text = "procName";
             // 
-            // statusMachineName
+            // statusProcessMemory
             // 
-            this.statusMachineName.Name = "statusMachineName";
-            this.statusMachineName.Size = new System.Drawing.Size(85, 17);
-            this.statusMachineName.Text = "machineName";
+            this.statusProcessMemory.Name = "statusProcessMemory";
+            this.statusProcessMemory.Size = new System.Drawing.Size(76, 17);
+            this.statusProcessMemory.Text = "procMemory";
             // 
             // Form1
             // 
@@ -380,7 +380,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusPID;
         private System.Windows.Forms.ToolStripStatusLabel statusPName;
-        private System.Windows.Forms.ToolStripStatusLabel statusMachineName;
+        private System.Windows.Forms.ToolStripStatusLabel statusProcessMemory;
     }
 }
 

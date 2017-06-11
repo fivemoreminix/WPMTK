@@ -132,15 +132,15 @@ namespace Test
                 statusPID.ToolTipText = statusPID.Text;
                 statusPName.Text = processes[processBox.SelectedIndex].ProcessName;
                 statusPName.ToolTipText = statusPName.Text;
-                statusMachineName.Text = "Paged M. Size: " + processes[processBox.SelectedIndex].PagedMemorySize64.ToString() + " (bytes)";
-                statusMachineName.ToolTipText = statusMachineName.Text;
+                statusProcessMemory.Text = "Paged M. Size: " + processes[processBox.SelectedIndex].PagedMemorySize64.ToString() + " (bytes)";
+                statusProcessMemory.ToolTipText = statusProcessMemory.Text;
             }
             else
             {
                 // null everything
                 statusPID.Text = "";
                 statusPName.Text = "";
-                statusMachineName.Text = "";
+                statusProcessMemory.Text = "";
             }
         }
 
