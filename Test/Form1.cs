@@ -13,16 +13,32 @@ namespace Test
 {
     public partial class Form1 : Form
     {
+        #region Fields
         private IntPtr address;
         private Process process;
         private OverlaySettings overlaySettings;
+        private List<System.Diagnostics.Process> processes = new List<System.Diagnostics.Process>();
+
+#endregion
 
         public Form1()
         {
             InitializeComponent();
-            addressNewSet.Enabled = false;
             timer1.Enabled = true;
         }
+
+        #region Private Methods
+        private void UpdateProcesses()
+        {
+            processes.Clear();
+            foreach (System.Diagnostics.Process proc in System.Diagnostics.Process.GetProcesses())
+            {
+                if (!String.IsNullOrEmpty(proc.MainWindowTitle))
+                    processes.Add(proc);
+            }
+        }
+
+#endregion
 
         // set address's value (int/string)
         private void button1_Click(object sender, EventArgs e)
@@ -63,6 +79,7 @@ namespace Test
                 addressNewSet.Enabled = true;
         }
 
+        /*
         // set process title
         private void button3_Click(object sender, EventArgs e)
         {
@@ -79,6 +96,7 @@ namespace Test
                 MessageBox.Show("Could not attach to that process. The title does not seem to meet any matches.", "Failed changing processes.");
             }
         }
+        */
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -98,12 +116,31 @@ namespace Test
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // update address
             if (address != null && process != null) // sync is available
             {
                 if (dataTypeBox.SelectedItem == dataTypeBox.Items[0]) // int
                     addressCurrentNum.Value = process.memory.ReadInt32(address);
                 else if (dataTypeBox.SelectedItem == dataTypeBox.Items[1]) // string
                     addressNewBox.Text = process.memory.ReadStringASCII(address, 0);
+            }
+
+            // update status strip
+            if (process != null && !String.IsNullOrEmpty(processBox.SelectedText))
+            {
+                statusPID.Text = "PID: " + processes[processBox.SelectedIndex].Id.ToString();
+                statusPID.ToolTipText = statusPID.Text;
+                statusPName.Text = processes[processBox.SelectedIndex].ProcessName;
+                statusPName.ToolTipText = statusPName.Text;
+                statusProcessMemory.Text = "Paged M. Size: " + processes[processBox.SelectedIndex].PagedMemorySize64.ToString() + " (bytes)";
+                statusProcessMemory.ToolTipText = statusProcessMemory.Text;
+            }
+            else
+            {
+                // null everything
+                statusPID.Text = "";
+                statusPName.Text = "";
+                statusProcessMemory.Text = "";
             }
         }
 
@@ -133,6 +170,25 @@ namespace Test
                     MessageBox.Show("You must specify a window title for the target process before you can draw an overlay.");
                 }
             }
+        }
+
+        // processBox dropdown is opened
+        private void processBox_DropDown(object sender, EventArgs e)
+        {
+            // update list of selectable processes
+            UpdateProcesses();
+            processBox.Items.Clear();
+            foreach (System.Diagnostics.Process proc in processes)
+            {
+                processBox.Items.Add(proc.MainWindowTitle);
+            }
+        }
+
+        // processBox selection made
+        private void processBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            process = new Process(processes[processBox.SelectedIndex].MainWindowTitle);
+            processTitleInfo.Visible = false;
         }
     }
 }
