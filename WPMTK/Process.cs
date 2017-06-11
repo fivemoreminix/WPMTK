@@ -14,24 +14,20 @@ namespace WPMTK
         public VAMemory memory;
         private IntPtr hWnd;
 
-        private string windowTitle;
+        public string windowTitle { get => windowTitle; private set => windowTitle = value; }
         private bool disposed = false;
 
         public Process(string window_title)
         {
-            this.windowTitle = window_title;
+            if (!SethWnd(windowTitle)) // true if succeeded
+            {
+                throw ProcessNotFoundException;
+            }
+            memory = new VAMemory(windowTitle);
+            windowTitle = window_title;
         }
 
         #region Getters
-        /// <summary>
-        /// Retrieve the window title of the process.
-        /// </summary>
-        /// <returns></returns>
-        public string GetWindowTitle()
-        {
-            return windowTitle;
-        }
-
         /// <summary>
         /// Uses NativeMethods.GetWindowRect() to retrieve the RECT of the process's main window.
         /// </summary>
@@ -50,11 +46,7 @@ namespace WPMTK
         /// <exception cref="ProcessNotFoundException"></exception>
         public void Attach()
         {
-            if (!SethWnd(windowTitle)) // true if succeeded
-            {
-                throw ProcessNotFoundException;
-            }
-            memory = new VAMemory(windowTitle);
+            
         }
         
         private bool SethWnd(string title)

@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WPMTK;
 
@@ -142,15 +137,6 @@ namespace Test
                 statusPName.Text = "";
                 statusProcessMemory.Text = "";
             }
-        }
-
-        // Address -> Attach
-        private void attachMenuItem_Click(object sender, EventArgs e)
-        {
-            if (process != null)
-                process.Attach();
-            else
-                MessageBox.Show("No process specified for attaching to.");
         }
 
         // Overlay Settings
