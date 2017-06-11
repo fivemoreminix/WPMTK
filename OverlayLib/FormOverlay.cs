@@ -310,6 +310,10 @@ namespace WOTK {
                 Location = new Point(rect.left, rect.top);
             }
             update(timer1.Interval);
+            rect = process.GetWindowRect();
+            this.Size = new Size(rect.right - rect.left, rect.bottom - rect.top);
+            this.Top = rect.top;
+            this.Left = rect.left;
         }
         #endregion
 
