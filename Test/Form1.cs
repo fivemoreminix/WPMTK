@@ -139,15 +139,6 @@ namespace Test
             }
         }
 
-        // Address -> Attach
-        private void attachMenuItem_Click(object sender, EventArgs e)
-        {
-            if (process != null)
-                process.Attach();
-            else
-                MessageBox.Show("No process specified for attaching to.");
-        }
-
         // Overlay Settings
         private void toolbarOverlayButton_Click(object sender, EventArgs e)
         {

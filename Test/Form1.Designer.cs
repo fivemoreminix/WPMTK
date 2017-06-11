@@ -49,7 +49,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolbarAddressDropdown = new System.Windows.Forms.ToolStripDropDownButton();
-            this.attachMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbarOverlayButton = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusPID = new System.Windows.Forms.ToolStripStatusLabel();
@@ -268,20 +267,11 @@
             // toolbarAddressDropdown
             // 
             this.toolbarAddressDropdown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolbarAddressDropdown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.attachMenuItem});
             this.toolbarAddressDropdown.Image = ((System.Drawing.Image)(resources.GetObject("toolbarAddressDropdown.Image")));
             this.toolbarAddressDropdown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolbarAddressDropdown.Name = "toolbarAddressDropdown";
             this.toolbarAddressDropdown.Size = new System.Drawing.Size(60, 19);
             this.toolbarAddressDropdown.Text = "Process";
-            // 
-            // attachMenuItem
-            // 
-            this.attachMenuItem.Name = "attachMenuItem";
-            this.attachMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.attachMenuItem.Text = "Attach";
-            this.attachMenuItem.Click += new System.EventHandler(this.attachMenuItem_Click);
             // 
             // toolbarOverlayButton
             // 
@@ -315,7 +305,7 @@
             // statusPName
             // 
             this.statusPName.Name = "statusPName";
-            this.statusPName.Size = new System.Drawing.Size(187, 17);
+            this.statusPName.Size = new System.Drawing.Size(227, 17);
             this.statusPName.Spring = true;
             this.statusPName.Text = "procName";
             // 
@@ -374,7 +364,6 @@
         private System.Windows.Forms.Label processTitleInfo;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton toolbarAddressDropdown;
-        private System.Windows.Forms.ToolStripMenuItem attachMenuItem;
         private System.Windows.Forms.ToolStripButton toolbarOverlayButton;
         private System.Windows.Forms.ComboBox processBox;
         private System.Windows.Forms.StatusStrip statusStrip1;
