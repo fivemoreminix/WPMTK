@@ -201,9 +201,9 @@
             this.processTitleInfo.BackColor = System.Drawing.SystemColors.ControlLight;
             this.processTitleInfo.Location = new System.Drawing.Point(3, 58);
             this.processTitleInfo.Name = "processTitleInfo";
-            this.processTitleInfo.Size = new System.Drawing.Size(133, 26);
+            this.processTitleInfo.Size = new System.Drawing.Size(128, 26);
             this.processTitleInfo.TabIndex = 12;
-            this.processTitleInfo.Text = "Set the process title before\r\ndoing anything.";
+            this.processTitleInfo.Text = "Select the process before\r\ndoing anything.";
             // 
             // label5
             // 
@@ -271,9 +271,10 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolbarAddressDropdown,
             this.toolbarOverlayButton});
+            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(369, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(369, 22);
             this.toolStrip1.TabIndex = 14;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -285,7 +286,7 @@
             this.toolbarAddressDropdown.Image = ((System.Drawing.Image)(resources.GetObject("toolbarAddressDropdown.Image")));
             this.toolbarAddressDropdown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolbarAddressDropdown.Name = "toolbarAddressDropdown";
-            this.toolbarAddressDropdown.Size = new System.Drawing.Size(60, 22);
+            this.toolbarAddressDropdown.Size = new System.Drawing.Size(60, 19);
             this.toolbarAddressDropdown.Text = "Process";
             // 
             // attachMenuItem
