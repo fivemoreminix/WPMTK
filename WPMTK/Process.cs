@@ -13,18 +13,19 @@ namespace WPMTK
             "E.x. \"Mount&Blade\".");
         public VAMemory memory;
         private IntPtr hWnd;
+        private string windowTitle;
 
-        public string windowTitle { get => windowTitle; private set => windowTitle = value; }
+        public string WindowTitle { get => windowTitle; private set => windowTitle = value; }
         private bool disposed = false;
 
         public Process(string window_title)
         {
-            if (!SethWnd(windowTitle)) // true if succeeded
+            if (!SethWnd(WindowTitle)) // true if succeeded
             {
                 throw ProcessNotFoundException;
             }
-            memory = new VAMemory(windowTitle);
-            windowTitle = window_title;
+            memory = new VAMemory(WindowTitle);
+            WindowTitle = window_title;
         }
 
         #region Getters

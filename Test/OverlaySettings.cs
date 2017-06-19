@@ -32,7 +32,7 @@ namespace Test
                 Close();
             }
             this.process = process;
-            Text = Text+" for "+process.GetWindowTitle();
+            Text = Text + " for " + process.WindowTitle;
         }
 
         // show
