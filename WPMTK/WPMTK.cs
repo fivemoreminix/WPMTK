@@ -28,6 +28,10 @@ namespace WPMTK
         private IntPtr hWnd;
         private string window_title;
 
+        /// <summary>
+        /// A generic Process object. On initialization, the Process class hooks directly into the specified Window's process (by title).
+        /// NOTE: It will look for the process based only on the specified window title in the given parameters.
+        /// </summary>
         public Process(string window_title)
         {
             try
