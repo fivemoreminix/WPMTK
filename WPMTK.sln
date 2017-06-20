@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverlayTest1", "OverlayTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WOTK", "OverlayLib\WOTK.csproj", "{16744261-05D1-4FE6-B694-F038D69BEE1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{AC98918D-083A-48E7-9DD1-F223431F4DA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{16744261-05D1-4FE6-B694-F038D69BEE1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16744261-05D1-4FE6-B694-F038D69BEE1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16744261-05D1-4FE6-B694-F038D69BEE1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC98918D-083A-48E7-9DD1-F223431F4DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC98918D-083A-48E7-9DD1-F223431F4DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC98918D-083A-48E7-9DD1-F223431F4DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC98918D-083A-48E7-9DD1-F223431F4DA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

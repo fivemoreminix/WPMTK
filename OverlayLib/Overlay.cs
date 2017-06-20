@@ -22,6 +22,9 @@ namespace WOTK {
         String
     }
 
+    /// <summary>
+    /// An Overlay object creates a FormOverlay window and draws shapes over it. You need to specify a <see cref="WPMTK.Process"/> object in the constructor.
+    /// </summary>
     public class Overlay {
         private FormOverlay formOverlay;
         internal bool isLocked;

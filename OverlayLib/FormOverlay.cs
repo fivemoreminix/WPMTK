@@ -309,7 +309,13 @@ namespace WOTK {
                 //Location = new Point(rect.left + 10, rect.top + 10);
                 Location = new Point(rect.left, rect.top);
             }
-            update(timer1.Interval);
+            try
+            {
+                update(timer1.Interval);
+            } catch
+            {
+                // do nothing, lol
+            }
             rect = process.GetWindowRect();
             this.Size = new Size(rect.right - rect.left, rect.bottom - rect.top);
             this.Top = rect.top;

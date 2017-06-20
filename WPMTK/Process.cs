@@ -4,6 +4,7 @@ namespace WPMTK
 {
     /// <summary>
     /// A Process object defines the attributes of a running windowed application on your computer.
+    /// NOTE: The Process class locates processes on your computer based on the window title you specify in the constructor.
     /// </summary>
     public class Process : IDisposable
     {
