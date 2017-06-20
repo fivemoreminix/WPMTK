@@ -51,7 +51,6 @@
     <Compile Include="FormOverlay.Designer.cs">
       <DependentUpon>FormOverlay.cs</DependentUpon>
     </Compile>
-    <Compile Include="MethodDelegate.cs" />
     <Compile Include="Overlay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

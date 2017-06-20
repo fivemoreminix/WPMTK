@@ -161,10 +161,7 @@ namespace WOTK {
         private NativeMethods.RECT rect;
         private Graphics graphics;
         private Pen myPen;
-        #endregion
-
-        #region Delegates
-        internal MethodDelegate.Update update;
+        private Action<FormOverlay> update;
         #endregion
 
         #region Graphic Draw Fields
@@ -229,9 +226,15 @@ namespace WOTK {
         /// <param name="windowName">The name of the program's window</param>
         /// <param name="pen">Your specified pen type</param>
         /// <param name="isBorderless">In case you want the overlay borderless</param>
-        public FormOverlay(Process process, Pen pen, bool isBorderless = false) : 
+        public FormOverlay(Process process, Pen pen, bool isBorderless = false) :
             this(process, isBorderless) {
             MyPen = pen;
+        }
+
+        public FormOverlay(Process process, Pen pen, Action<FormOverlay> update, bool isBorderless = false) :
+            this(process, pen, isBorderless)
+        {
+            this.update = update;
         }
         #endregion
 
@@ -309,13 +312,7 @@ namespace WOTK {
                 //Location = new Point(rect.left + 10, rect.top + 10);
                 Location = new Point(rect.left, rect.top);
             }
-            try
-            {
-                update(timer1.Interval);
-            } catch
-            {
-                // do nothing, lol
-            }
+            update?.Invoke(this);
             rect = process.GetWindowRect();
             this.Size = new Size(rect.right - rect.left, rect.bottom - rect.top);
             this.Top = rect.top;

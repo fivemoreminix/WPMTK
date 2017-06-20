@@ -21,7 +21,7 @@ namespace WPMTK
 
         public Process(string window_title)
         {
-            if (!SethWnd(WindowTitle)) // true if succeeded
+            if (!SethWnd(window_title)) // true if succeeded
             {
                 throw ProcessNotFoundException;
             }
@@ -36,7 +36,8 @@ namespace WPMTK
         /// <returns>NativeMethods.RECT</returns>
         public NativeMethods.RECT GetWindowRect()
         {
-            NativeMethods.GetWindowRect(hWnd, out NativeMethods.RECT rect);
+            NativeMethods.RECT rect;
+            NativeMethods.GetWindowRect(hWnd, out rect);
             return rect;
         }
         #endregion
