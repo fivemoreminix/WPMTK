@@ -28,9 +28,9 @@ namespace WindowsFormsApp1
             
             label1.Text = process.WindowTitle;
             // overlay
-            overlay.IsOverlayShown(true);
             RectangleF rect = new RectangleF(10, 10, 100, 100);
             overlay.AddShape(WOTK.Shapes.Rectangle, rect);
+            overlay.IsOverlayShown(true);
         }
     }
 }

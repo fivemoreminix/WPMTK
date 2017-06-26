@@ -90,7 +90,7 @@ namespace WPMTK
             GC.SuppressFinalize(this);
         }
 
-        protected unsafe virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!disposed)
             {

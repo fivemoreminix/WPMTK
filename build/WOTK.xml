@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WOTK</name>
+    </assembly>
+    <members>
+        <member name="T:WOTK.Arc">
+            <summary>
+            A struct for an arc.
+            </summary>
+        </member>
+        <member name="T:WOTK.ClosedCurve">
+            <summary>
+            A struct for a closed curve.
+            </summary>
+        </member>
+        <member name="T:WOTK.Curve">
+            <summary>
+            A struct for a curve.
+            </summary>
+        </member>
+        <member name="T:WOTK.IconStruct">
+            <summary>
+            A struct for an icon.
+            </summary>
+        </member>
+        <member name="T:WOTK.ImageStruct">
+            <summary>
+            A struct for an image.
+            </summary>
+        </member>
+        <member name="T:WOTK.Pie">
+            <summary>
+            A struct for a pie shape.
+            </summary>
+        </member>
+        <member name="T:WOTK.Polygon">
+            <summary>
+            A struct for a polygon shape.
+            </summary>
+        </member>
+        <member name="T:WOTK.StringStruct">
+            <summary>
+            A struct for a string.
+            </summary>
+        </member>
+        <member name="T:WOTK.FormOverlay">
+            <summary>
+            The form <see cref="T:WOTK.Overlay"/> manipulates.
+            </summary>
+        </member>
+        <member name="P:WOTK.FormOverlay.AutoRefresh">
+            <summary>
+            Checks if the form should update for every change.
+            </summary>
+        </member>
+        <member name="P:WOTK.FormOverlay.MyPen">
+            <summary>
+            The <see cref="T:System.Drawing.Pen"/> is used to specify fill and stroke colors, as well as more. It's a necessity to do any fancy painting.
+            </summary>
+        </member>
+        <member name="M:WOTK.FormOverlay.#ctor(WPMTK.Process,System.Boolean)">
+            <summary>
+            Initialize a new Overlay.
+            </summary>
+            <param name="process">A <see cref="T:WPMTK.Process"/> object is required to attach the overlay to the program.</param>
+            <param name="isBorderless">If you want the overlay visible. (Mostly used for testing)</param>
+        </member>
+        <member name="M:WOTK.FormOverlay.#ctor(WPMTK.Process,System.Drawing.Pen,System.Boolean)">
+            <summary>
+            Initialize a new Overlay.
+            </summary>
+            <param name="process">A <see cref="T:WPMTK.Process"/> object is required to attach the overlay to the program.</param>
+            <param name="pen">A pen to initialize with.</param>
+            <param name="isBorderless">If you want the overlay visible. (Mostly used for testing)</param>
+        </member>
+        <member name="M:WOTK.FormOverlay.#ctor(WPMTK.Process,System.Drawing.Pen,System.Action{WOTK.FormOverlay},System.Boolean)">
+            <summary>
+            Initialize a new Overlay.
+            </summary>
+            <param name="process">A <see cref="T:WPMTK.Process"/> object is required to attach the overlay to the program.</param>
+            <param name="pen">A pen to initialize with.</param>
+            <param name="update"></param>
+            <param name="isBorderless">If you want the overlay visible. (Mostly used for testing)</param>
+        </member>
+        <member name="M:WOTK.FormOverlay.RefreshForm">
+            <summary>
+            Update the form/overlay after painting.
+            Does not require <see cref="P:WOTK.FormOverlay.AutoRefresh"/> to be active.
+            </summary>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddRectangle(System.Drawing.RectangleF)">
+            <summary>
+            Draws a rectangle to the form.
+            </summary>
+            <param name="rectangle">The float version of Rectangle class</param>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddLine(System.Drawing.PointF)">
+            <summary>
+            Draws a linear line to the form.
+            </summary>
+            <param name="point">The float version of Point class</param>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddArc(WOTK.Arc)">
+            <summary>
+            Draws an arc -- a portion of an eclipse.
+            </summary>
+            <param name="arc">Arc class</param>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddBezier(System.Drawing.PointF)">
+            <summary>
+            Draws a bezier -- a complicated curving line.
+            </summary>
+            <param name="bezier"></param>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddClosedCurve(WOTK.ClosedCurve)">
+            <summary>
+            Draws a closed curve.
+            </summary>
+            <param name="closedCurve"></param>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddCurve(WOTK.Curve)">
+            <summary>
+            Draws a curve.
+            </summary>
+            <param name="curve"></param>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddEllipse(System.Drawing.RectangleF)">
+            <summary>
+            Draws an ellipse.
+            </summary>
+            <param name="ellipse">Ellipses use <see cref="T:System.Drawing.RectangleF"/> struct like the <seealso cref="M:WOTK.FormOverlay.AddRectangle(System.Drawing.RectangleF)"/> method.</param>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddIcon(WOTK.IconStruct)">
+            <summary>
+            Draws an icon.
+            </summary>
+            <param name="icon"></param>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddImage(WOTK.ImageStruct)">
+            <summary>
+            Draws an image.
+            </summary>
+            <param name="image"></param>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddPie(WOTK.Pie)">
+            <summary>
+            Draws a pie.
+            </summary>
+            <param name="pie"></param>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddPolygon(WOTK.Polygon)">
+            <summary>
+            Draws a polygon shape.
+            </summary>
+            <param name="polygon">Polygon class</param>
+        </member>
+        <member name="M:WOTK.FormOverlay.AddString(WOTK.StringStruct)">
+            <summary>
+            Draws text.
+            </summary>
+            <param name="text">StringStruct class</param>
+        </member>
+        <member name="F:WOTK.FormOverlay.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:WOTK.FormOverlay.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:WOTK.FormOverlay.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:WOTK.Shapes">
+            <summary>
+            Every shape supported by the overlay.
+            </summary>
+        </member>
+        <member name="T:WOTK.Overlay">
+            <summary>
+            An Overlay object creates a FormOverlay window and draws shapes over it. You need to specify a <see cref="T:WPMTK.Process"/> object in the constructor.
+            </summary>
+        </member>
+        <member name="P:WOTK.Overlay.FormOverlay">
+            <summary>
+            In case you want to edit the form manually, you can do it here.
+            </summary>
+        </member>
+        <member name="M:WOTK.Overlay.#ctor(WPMTK.Process)">
+            <summary>
+            Draw a new overlay above the specified Process's main window.
+            </summary>
+            <param name="process"></param>
+        </member>
+        <member name="M:WOTK.Overlay.#ctor(WPMTK.Process,System.Boolean)">
+            <summary>
+            Draw a new overlay above the specified Process's main window.
+            </summary>
+            <param name="process"></param>
+            <param name="isBorderless">You can specify false to keep your overlay window from drawing borderless. (Useful for testing)</param>
+        </member>
+        <member name="M:WOTK.Overlay.IsOverlayShown(System.Boolean)">
+            <summary>
+            After creating the overlay, you need to specify whether it's visible or not.
+            </summary>
+            <param name="visible"></param>
+        </member>
+        <member name="M:WOTK.Overlay.AddShape(WOTK.Shapes,System.Object)">
+            <summary>
+            Draws a shape onto the overlay.
+            </summary>
+            <param name="shape">Shape from <see cref="T:WOTK.Shapes"/> to define the type of supported shape.</param>
+            <param name="shape_struct">Shape struct from <see cref="N:System.Drawing"/> to define the attributes of the shape. Must match the specified <see cref="T:WOTK.Shapes"/> shape.</param>
+        </member>
+    </members>
+</doc>
