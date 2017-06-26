@@ -3,6 +3,10 @@ using System.Runtime.InteropServices;
 
 namespace WPMTK
 {
+    /// <summary>
+    /// Contains functions and definitions imported from Windows DLLs.
+    /// We don't expect you to use these, but you can if you need to.
+    /// </summary>
     public static class NativeMethods
     {
         [StructLayout(LayoutKind.Sequential)]

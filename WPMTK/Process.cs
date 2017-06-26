@@ -8,24 +8,34 @@ namespace WPMTK
     /// </summary>
     public class Process : IDisposable
     {
+        /// <summary>
+        /// This exception may occur when you specify a target process that could not be found.
+        /// </summary>
         public static Exception ProcessNotFoundException = new Exception(
             "Could not find the process specified. " +
             "Please reference the process by it's window title exactly as it appears. " +
             "E.x. \"Mount&Blade\".");
+        /// <summary>
+        /// Access to the VAMemory object that directly manages memory addresses.
+        /// Use this to do things like: reading and writing the health of the player, reading/writing ammo, etc.
+        /// </summary>
         public VAMemory memory;
         private IntPtr hWnd;
-        private string windowTitle;
 
-        public string WindowTitle { get => windowTitle; private set => windowTitle = value; }
+        public string WindowTitle { get; private set; }
         private bool disposed = false;
-
+        
+        /// <summary>
+        /// Initialize a new Process. May return <see cref="ProcessNotFoundException"/> if it could not locate the process specified by its window's title.
+        /// </summary>
+        /// <param name="window_title"></param>
         public Process(string window_title)
         {
             if (!SethWnd(window_title)) // true if succeeded
             {
                 throw ProcessNotFoundException;
             }
-            memory = new VAMemory(WindowTitle);
+            memory = new VAMemory(window_title);
             WindowTitle = window_title;
         }
 
@@ -43,15 +53,6 @@ namespace WPMTK
         #endregion
 
         #region hWnd & VAMemory
-        /// <summary>
-        /// Before any memory can be used, or overlays can be drawn, the process must be attached. Should be within a "try" block.
-        /// </summary>
-        /// <exception cref="ProcessNotFoundException"></exception>
-        public void Attach()
-        {
-            
-        }
-        
         private bool SethWnd(string title)
         {
             try
@@ -77,27 +78,12 @@ namespace WPMTK
         {
             return hWnd;
         }
-
-        /// <summary>
-        /// Changes this object to attach to an entirely different process.
-        /// </summary>
-        /// <param name="window_title">Name of process to attach to.</param>
-        /// <returns>True if no errors, false if failed to locate new process: returns to same process.</returns>
-        /*public void ChangeProcess(string window_title)
-        {
-            if (SethWnd(window_title)) // if false, failed
-            {
-                memory = new VAMemory(window_title);
-                windowTitle = window_title;
-            }
-            else
-            {
-                throw ProcessNotFoundException;
-            }
-        }*/
         #endregion
 
         #region Disposal
+        /// <summary>
+        /// When you're done using the Process object, please dispose it. When you dispose, it clears the unused memory.
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
@@ -115,14 +101,18 @@ namespace WPMTK
                 }
                 try {
                     NativeMethods.CloseHandle(hWnd);
-                } catch (Exception ex) {
-                    Environment.FailFast(ex.Message);
+                } catch {
+                    // do nothing, lol
                 }
                 hWnd = IntPtr.Zero;
                 disposed = true;
             }
         }
 
+        /// <summary>
+        /// A quick way to dispose the Process object.
+        /// <see cref="Dispose"/>
+        /// </summary>
         ~Process()
         {
             Dispose(false);
