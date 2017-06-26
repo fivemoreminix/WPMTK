@@ -1,24 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WPMTK;
 
-namespace WOTK {
+namespace WOTK
+{
     #region Structs
-    /*
-    public struct RECT {
-        public int left, top, right, bottom;
-    }
-    */
-
     /// <summary>
     /// A struct for an arc.
     /// </summary>
@@ -150,7 +139,7 @@ namespace WOTK {
     #endregion
 
     /// <summary>
-    /// The overlay form.
+    /// The form <see cref="Overlay"/> manipulates.
     /// </summary>
     public partial class FormOverlay : Form {
         #region Fields
@@ -182,23 +171,23 @@ namespace WOTK {
 
         #region Properties
         /// <summary>
-        /// Checks if the form should update for every change
+        /// Checks if the form should update for every change.
         /// </summary>
         public bool AutoRefresh { get => autoUpdate; set => autoUpdate = value; }
 
         /// <summary>
-        /// This is the pen. You are free to use it whenever you wish.
+        /// The <see cref="Pen"/> is used to specify fill and stroke colors, as well as more. It's a necessity to do any fancy painting.
         /// </summary>
         public Pen MyPen { get => myPen; set => myPen = value; }
         #endregion
 
         #region Constructor
         /// <summary>
-        /// The overlay's constructor.
+        /// Initialize a new Overlay.
         /// </summary>
-        /// <param name="windowName">The name of the program's window</param>
-        /// <param name="isBorderless">In case you want the overlay borderless</param>
-        public FormOverlay(Process process, bool isBorderless = false) {
+        /// <param name="process">A <see cref="Process"/> object is required to attach the overlay to the program.</param>
+        /// <param name="isBorderless">If you want the overlay visible. (Mostly used for testing)</param>
+        public FormOverlay(Process process, bool isBorderless = true) {
             InitializeComponent();
             // fields
             this.process = process;
@@ -221,17 +210,24 @@ namespace WOTK {
         }
 
         /// <summary>
-        /// The overlay's constructor.
+        /// Initialize a new Overlay.
         /// </summary>
-        /// <param name="windowName">The name of the program's window</param>
-        /// <param name="pen">Your specified pen type</param>
-        /// <param name="isBorderless">In case you want the overlay borderless</param>
-        public FormOverlay(Process process, Pen pen, bool isBorderless = false) :
+        /// <param name="process">A <see cref="Process"/> object is required to attach the overlay to the program.</param>
+        /// <param name="pen">A pen to initialize with.</param>
+        /// <param name="isBorderless">If you want the overlay visible. (Mostly used for testing)</param>
+        public FormOverlay(Process process, Pen pen, bool isBorderless = true) :
             this(process, isBorderless) {
             MyPen = pen;
         }
 
-        public FormOverlay(Process process, Pen pen, Action<FormOverlay> update, bool isBorderless = false) :
+        /// <summary>
+        /// Initialize a new Overlay.
+        /// </summary>
+        /// <param name="process">A <see cref="Process"/> object is required to attach the overlay to the program.</param>
+        /// <param name="pen">A pen to initialize with.</param>
+        /// <param name="update"></param>
+        /// <param name="isBorderless">If you want the overlay visible. (Mostly used for testing)</param>
+        public FormOverlay(Process process, Pen pen, Action<FormOverlay> update, bool isBorderless = true) :
             this(process, pen, isBorderless)
         {
             this.update = update;
@@ -322,16 +318,13 @@ namespace WOTK {
 
         #region Painting Methods
         /// <summary>
-        /// Refresh the overlay/form after painting.
-        /// Basically, the "Update" method.
+        /// Update the form/overlay after painting.
+        /// Does not require <see cref="AutoRefresh"/> to be active.
         /// </summary>
         public void RefreshForm() {
             this.Refresh();
         }
-
-        /// <summary>
-        /// Refresh the form, based on the update check.
-        /// </summary>
+        
         private void RefreshFormChecked() {
             if (autoUpdate) {
                 RefreshForm();
@@ -339,7 +332,7 @@ namespace WOTK {
         }
 
         /// <summary>
-        /// Adds a rectangle to the form.
+        /// Draws a rectangle to the form.
         /// </summary>
         /// <param name="rectangle">The float version of Rectangle class</param>
         public void AddRectangle(RectangleF rectangle) {
@@ -348,7 +341,7 @@ namespace WOTK {
         }
         
         /// <summary>
-        /// Adds a linear line to the form.
+        /// Draws a linear line to the form.
         /// </summary>
         /// <param name="point">The float version of Point class</param>
         public void AddLine(PointF point) {
@@ -357,7 +350,7 @@ namespace WOTK {
         }
 
         /// <summary>
-        /// Adds an arc representing a portion of an eclipse.
+        /// Draws an arc -- a portion of an eclipse.
         /// </summary>
         /// <param name="arc">Arc class</param>
         public void AddArc(Arc arc) {
@@ -365,32 +358,55 @@ namespace WOTK {
             RefreshFormChecked();
         }
 
-
+        /// <summary>
+        /// Draws a bezier -- a complicated curving line.
+        /// </summary>
+        /// <param name="bezier"></param>
         public void AddBezier(PointF bezier) {
             beziers.Add(bezier);
             RefreshFormChecked();
         }
 
+        /// <summary>
+        /// Draws a closed curve.
+        /// </summary>
+        /// <param name="closedCurve"></param>
         public void AddClosedCurve(ClosedCurve closedCurve) {
             closedCurves.Add(closedCurve);
             RefreshFormChecked();
         }
 
+        /// <summary>
+        /// Draws a curve.
+        /// </summary>
+        /// <param name="curve"></param>
         public void AddCurve(Curve curve) {
             curves.Add(curve);
             RefreshFormChecked();
         }
 
+        /// <summary>
+        /// Draws an ellipse.
+        /// </summary>
+        /// <param name="ellipse">Ellipses use <see cref="RectangleF"/> struct like the <seealso cref="AddRectangle(RectangleF)"/> method.</param>
         public void AddEllipse(RectangleF ellipse) {
             ellipses.Add(ellipse);
             RefreshFormChecked();
         }
 
+        /// <summary>
+        /// Draws an icon.
+        /// </summary>
+        /// <param name="icon"></param>
         public void AddIcon(IconStruct icon) {
             icons.Add(icon);
             RefreshFormChecked();
         }
 
+        /// <summary>
+        /// Draws an image.
+        /// </summary>
+        /// <param name="image"></param>
         public void AddImage(ImageStruct image) {
             images.Add(image);
             RefreshFormChecked();
@@ -401,13 +417,17 @@ namespace WOTK {
             RefreshFormChecked();
         }
 
+        /// <summary>
+        /// Draws a pie.
+        /// </summary>
+        /// <param name="pie"></param>
         public void AddPie(Pie pie) {
             pies.Add(pie);
             RefreshFormChecked();
         }
 
         /// <summary>
-        /// Adds a polygon shape.
+        /// Draws a polygon shape.
         /// </summary>
         /// <param name="polygon">Polygon class</param>
         public void AddPolygon(Polygon polygon) {
@@ -416,7 +436,7 @@ namespace WOTK {
         }
 
         /// <summary>
-        /// Adds a string of text.
+        /// Draws text.
         /// </summary>
         /// <param name="text">StringStruct class</param>
         public void AddString(StringStruct text) {
