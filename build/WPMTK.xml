@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WPMTK</name>
+    </assembly>
+    <members>
+        <member name="T:WPMTK.NativeMethods">
+            <summary>
+            Contains functions and definitions imported from Windows DLLs.
+            We don't expect you to use these, but you can if you need to.
+            </summary>
+        </member>
+        <member name="T:WPMTK.Process">
+            <summary>
+            A Process object defines the attributes of a running windowed application on your computer.
+            NOTE: The Process class locates processes on your computer based on the window title you specify in the constructor.
+            </summary>
+        </member>
+        <member name="F:WPMTK.Process.ProcessNotFoundException">
+            <summary>
+            This exception may occur when you specify a target process that could not be found.
+            </summary>
+        </member>
+        <member name="F:WPMTK.Process.memory">
+            <summary>
+            Access to the VAMemory object that directly manages memory addresses.
+            Use this to do things like: reading and writing the health of the player, reading/writing ammo, etc.
+            </summary>
+        </member>
+        <member name="M:WPMTK.Process.#ctor(System.String)">
+            <summary>
+            Initialize a new Process. May return <see cref="F:WPMTK.Process.ProcessNotFoundException"/> if it could not locate the process specified by its window's title.
+            </summary>
+            <param name="window_title"></param>
+        </member>
+        <member name="M:WPMTK.Process.GetWindowRect">
+            <summary>
+            Uses NativeMethods.GetWindowRect() to retrieve the RECT of the process's main window.
+            </summary>
+            <returns>NativeMethods.RECT</returns>
+        </member>
+        <member name="M:WPMTK.Process.GethWnd">
+            <summary>
+            Get the HWND that belongs to this process.
+            </summary>
+            <returns>IntPtr (hWnd)</returns>
+        </member>
+        <member name="M:WPMTK.Process.Dispose">
+            <summary>
+            When you're done using the Process object, please dispose it. When you dispose, it clears the unused memory.
+            </summary>
+        </member>
+        <member name="M:WPMTK.Process.Finalize">
+            <summary>
+            A quick way to dispose the Process object.
+            <see cref="M:WPMTK.Process.Dispose"/>
+            </summary>
+        </member>
+    </members>
+</doc>
