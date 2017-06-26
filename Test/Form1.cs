@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WPMTK;
 
@@ -13,27 +8,44 @@ namespace Test
 {
     public partial class Form1 : Form
     {
+        #region Fields
         private IntPtr address;
-        private string process_title;
-        private Process proc;
+        private Process process;
+        private OverlaySettings overlaySettings;
+        private List<System.Diagnostics.Process> processes = new List<System.Diagnostics.Process>();
+
+#endregion
 
         public Form1()
         {
             InitializeComponent();
-            button1.Enabled = false;
+            timer1.Enabled = true;
         }
+
+        #region Private Methods
+        private void UpdateProcesses()
+        {
+            processes.Clear();
+            foreach (System.Diagnostics.Process proc in System.Diagnostics.Process.GetProcesses())
+            {
+                if (!String.IsNullOrEmpty(proc.MainWindowTitle))
+                    processes.Add(proc);
+            }
+        }
+
+#endregion
 
         // set address's value (int/string)
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem == comboBox1.Items[0]) // int
+            if (dataTypeBox.SelectedItem == dataTypeBox.Items[0]) // int
             {
                 int value = (int)numericUpDown1.Value;
-                proc.memory.WriteInt32(address, value);
+                process.memory.WriteInt32(address, value);
             }
-            else if (comboBox1.SelectedItem == comboBox1.Items[1]) // string
+            else if (dataTypeBox.SelectedItem == dataTypeBox.Items[1]) // string
             {
-                proc.memory.WriteStringASCII(address, textBox3.Text);
+                process.memory.WriteStringASCII(address, addressNewBox.Text);
             }
         }
 
@@ -46,75 +58,123 @@ namespace Test
         {
             try
             {
-                int str_int = (int)new Int32Converter().ConvertFromString(textBox1.Text);
+                int str_int = (int)new Int32Converter().ConvertFromString(addressBox.Text);
                 address = (IntPtr)str_int;
-                button2.Enabled = false;
+                addressSet.Enabled = false;
             }
             catch
             {
-                MessageBox.Show("\"" + textBox1.Text + "\" is not recognized as a valid memory address.", "Address Error!");
+                MessageBox.Show("\"" + addressBox.Text + "\" is not recognized as a valid memory address.", "Address Error!");
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (button1.Enabled != true)
-                button1.Enabled = true;
-            if (button2.Enabled != true)
-                button2.Enabled = true;
+            if (addressNewSet.Enabled != true)
+                addressNewSet.Enabled = true;
         }
 
+        /*
         // set process title
         private void button3_Click(object sender, EventArgs e)
         {
             try
             {
-                if (proc != null)
-                    proc.changeprocess(textBox2.Text);
+                if (process != null)
+                    process.ChangeProcess(processTitleBox.Text);
                 else
-                    proc = new Process(textBox2.Text); // Process initializer
-                process_title = textBox2.Text;
-                label6.Visible = false; // hide the info label
+                    process = new Process(processTitleBox.Text); // Process initializer
+                processTitleInfo.Visible = false; // hide the info label
             }
             catch
             {
                 MessageBox.Show("Could not attach to that process. The title does not seem to meet any matches.", "Failed changing processes.");
             }
         }
+        */
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem == comboBox1.Items[0]) // int
+            if (dataTypeBox.SelectedItem == dataTypeBox.Items[0]) // int
             {
                 label1.Visible = true;
-                textBox3.Visible = false;
+                addressNewBox.Visible = false;
                 numericUpDown1.Visible = true;
             }
-            else if (comboBox1.SelectedItem == comboBox1.Items[1]) // string
+            else if (dataTypeBox.SelectedItem == dataTypeBox.Items[1]) // string
             {
                 label1.Visible = true;
                 numericUpDown1.Visible = false;
-                textBox3.Visible = true;
+                addressNewBox.Visible = true;
             }
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox1.Checked)
-                timer1.Enabled = true;
-            else
-                timer1.Enabled = false;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (checkBox1.Checked && address != null && process_title != null) // sync on
+            // update address
+            if (address != null && process != null) // sync is available
             {
-                if (comboBox1.SelectedItem == comboBox1.Items[0]) // int
-                    numericUpDown2.Value = proc.memory.ReadInt32(address);
-                else if (comboBox1.SelectedItem == comboBox1.Items[1]) // string
-                    textBox3.Text = proc.memory.ReadStringASCII(address, 0);
+                if (dataTypeBox.SelectedItem == dataTypeBox.Items[0]) // int
+                    addressCurrentNum.Value = process.memory.ReadInt32(address);
+                else if (dataTypeBox.SelectedItem == dataTypeBox.Items[1]) // string
+                    addressNewBox.Text = process.memory.ReadStringASCII(address, 0);
             }
+
+            // update status strip
+            if (process != null && !String.IsNullOrEmpty(processBox.SelectedText))
+            {
+                statusPID.Text = "PID: " + processes[processBox.SelectedIndex].Id.ToString();
+                statusPID.ToolTipText = statusPID.Text;
+                statusPName.Text = processes[processBox.SelectedIndex].ProcessName;
+                statusPName.ToolTipText = statusPName.Text;
+                statusProcessMemory.Text = "Paged M. Size: " + processes[processBox.SelectedIndex].PagedMemorySize64.ToString() + " (bytes)";
+                statusProcessMemory.ToolTipText = statusProcessMemory.Text;
+            }
+            else
+            {
+                // null everything
+                statusPID.Text = "";
+                statusPName.Text = "";
+                statusProcessMemory.Text = "";
+            }
+        }
+
+        // Overlay Settings
+        private void toolbarOverlayButton_Click(object sender, EventArgs e)
+        {
+            if (overlaySettings != null && !overlaySettings.IsDisposed) // hasn't been closed yet, just unfocused
+                overlaySettings.Show();
+            else // the form had been closed, reopen it
+            {
+                if (process != null)
+                {
+                    overlaySettings = new OverlaySettings(process);
+                    overlaySettings.Show();
+                }
+                else
+                {
+                    MessageBox.Show("You must specify a window title for the target process before you can draw an overlay.");
+                }
+            }
+        }
+
+        // processBox dropdown is opened
+        private void processBox_DropDown(object sender, EventArgs e)
+        {
+            // update list of selectable processes
+            UpdateProcesses();
+            processBox.Items.Clear();
+            foreach (System.Diagnostics.Process proc in processes)
+            {
+                processBox.Items.Add(proc.MainWindowTitle);
+            }
+        }
+
+        // processBox selection made
+        private void processBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            process = new Process(processes[processBox.SelectedIndex].MainWindowTitle);
+            processTitleInfo.Visible = false;
         }
     }
 }

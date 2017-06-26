@@ -1,4 +1,4 @@
-﻿namespace OverlayLib {
+﻿namespace WOTK {
     partial class FormOverlay {
         /// <summary>
         /// Required designer variable.
@@ -23,7 +23,15 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 250;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormOverlay
             // 
@@ -39,5 +47,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timer1;
     }
 }
