@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WOTK {
+    /// <summary>
+    /// Every shape supported by the overlay.
+    /// </summary>
     public enum Shapes {
         Rectangle,
         Arc,
@@ -34,48 +37,42 @@ namespace WOTK {
         /// In case you want to edit the form manually, you can do it here.
         /// </summary>
         public FormOverlay FormOverlay {
-            get => !isLocked ? formOverlay : throw new InvalidOperationException("Overlay is locked from modification");
-            set { if (!isLocked) formOverlay = value; else throw new InvalidOperationException("Overlay is locked from modification"); }
+            get => !isLocked ? formOverlay : throw new InvalidOperationException("Overlay is locked from modification.");
+            set { if (!isLocked) formOverlay = value; else throw new InvalidOperationException("Overlay is locked from modification."); }
         }
 
+        /// <summary>
+        /// Draw a new overlay above the specified Process's main window.
+        /// </summary>
+        /// <param name="process"></param>
         public Overlay(WPMTK.Process process)
         {
             this.process = process;
-            FormOverlay = new FormOverlay(process, false);
+            FormOverlay = new FormOverlay(process, true);
         }
 
+        /// <summary>
+        /// Draw a new overlay above the specified Process's main window.
+        /// </summary>
+        /// <param name="process"></param>
+        /// <param name="isBorderless">You can specify false to keep your overlay window from drawing borderless. (Useful for testing)</param>
         public Overlay(WPMTK.Process process, bool isBorderless)
         {
             this.process = process;
             FormOverlay = new FormOverlay(process, isBorderless);
         }
 
-        public void IsOverlayShown(bool overlaySwitch) {
-            if (overlaySwitch) {
+        /// <summary>
+        /// After creating the overlay, you need to specify whether it's visible or not.
+        /// </summary>
+        /// <param name="visible"></param>
+        public void IsOverlayShown(bool visible) {
+            if (visible) {
                 FormOverlay.Show();
             } else {
                 FormOverlay.Hide();
             }
         }
-            
-        #region Old Constructors
-        /*
-        public Overlay() {
-            windowName = string.Empty;
-            formOverlay = new FormOverlay(windowName, true);
-        }
-
-        public Overlay(string windowName) {
-            this.windowName = windowName;
-            formOverlay = new FormOverlay(windowName, true);
-        }
-
-        public Overlay(string windowName, bool isBorderless) {
-            this.windowName = windowName;
-            formOverlay = new FormOverlay(windowName, isBorderless);
-        }
-        */
-        #endregion
 
         public void AddShape(Shapes shape, object structData) {
             if (!isLocked) {
