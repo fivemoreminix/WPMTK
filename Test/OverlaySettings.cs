@@ -56,7 +56,7 @@ namespace Test
         private void timer1_Tick(object sender, EventArgs e)
         {
             // overlay coordinates
-            System.Drawing.Rectangle bounds = overlay.FormOverlay.DesktopBounds;
+            Rectangle bounds = overlay.FormOverlay.DesktopBounds;
             string coord = "Coordinates(X: " + bounds.X + ", Y: " + bounds.Y +
                 ", W: "+ bounds.Width + ", H: " + bounds.Height + ")";
             coordinatesStatus.Text = coord;
@@ -66,8 +66,23 @@ namespace Test
         private void outlinedBoxCheck_CheckedChanged(object sender, EventArgs e)
         {
             RectangleF rect = new RectangleF(
-                rand.Next(overlay.FormOverlay.Left, overlay.FormOverlay.Right),
-                rand.Next(overlay.FormOverlay.Top, overlay.FormOverlay.Bottom),
+                rand.Next(0, overlay.FormOverlay.Right),
+                rand.Next(0, overlay.FormOverlay.Bottom),
+                100,
+                100);
+            overlay.AddShape(Shapes.Rectangle, rect);
+            posShapeOne.Text = "X: " + rect.X + ", Y: " + rect.Y +
+                ", W: " + rect.Width + ", H: " + rect.Height;
+        }
+
+        private void filledBoxCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            Brush b = new SolidBrush(Color.Red);
+            Pen p = new Pen(b);
+            overlay.FormOverlay.MyPen = p;
+            RectangleF rect = new RectangleF(
+                rand.Next(0, overlay.FormOverlay.Right),
+                rand.Next(0, overlay.FormOverlay.Bottom),
                 100,
                 100);
             overlay.AddShape(Shapes.Rectangle, rect);
