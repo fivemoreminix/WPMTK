@@ -48,7 +48,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolbarAddressDropdown = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolbarOverlayButton = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusPID = new System.Windows.Forms.ToolStripStatusLabel();
@@ -255,7 +254,6 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolbarAddressDropdown,
             this.toolbarOverlayButton});
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -263,15 +261,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(369, 22);
             this.toolStrip1.TabIndex = 14;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolbarAddressDropdown
-            // 
-            this.toolbarAddressDropdown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolbarAddressDropdown.Image = ((System.Drawing.Image)(resources.GetObject("toolbarAddressDropdown.Image")));
-            this.toolbarAddressDropdown.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolbarAddressDropdown.Name = "toolbarAddressDropdown";
-            this.toolbarAddressDropdown.Size = new System.Drawing.Size(60, 19);
-            this.toolbarAddressDropdown.Text = "Process";
             // 
             // toolbarOverlayButton
             // 
@@ -363,7 +352,6 @@
         private System.Windows.Forms.ComboBox dataTypeBox;
         private System.Windows.Forms.Label processTitleInfo;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripDropDownButton toolbarAddressDropdown;
         private System.Windows.Forms.ToolStripButton toolbarOverlayButton;
         private System.Windows.Forms.ComboBox processBox;
         private System.Windows.Forms.StatusStrip statusStrip1;

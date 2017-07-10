@@ -37,18 +37,18 @@
             this.coordinatesStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.outlinedBoxCheck = new System.Windows.Forms.CheckBox();
-            this.filledBoxCheck = new System.Windows.Forms.CheckBox();
-            this.outlinedCircleCheck = new System.Windows.Forms.CheckBox();
-            this.filledCircleCheck = new System.Windows.Forms.CheckBox();
+            this.posShapeFour = new System.Windows.Forms.Label();
+            this.posShapeThree = new System.Windows.Forms.Label();
+            this.posShapeTwo = new System.Windows.Forms.Label();
+            this.posShapeOne = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.filledCircleCheck = new System.Windows.Forms.CheckBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.outlinedCircleCheck = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.posShapeOne = new System.Windows.Forms.Label();
-            this.posShapeTwo = new System.Windows.Forms.Label();
-            this.posShapeThree = new System.Windows.Forms.Label();
-            this.posShapeFour = new System.Windows.Forms.Label();
+            this.filledBoxCheck = new System.Windows.Forms.CheckBox();
+            this.outlinedBoxCheck = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -105,7 +105,7 @@
             // coordinatesStatus
             // 
             this.coordinatesStatus.Name = "coordinatesStatus";
-            this.coordinatesStatus.Size = new System.Drawing.Size(402, 17);
+            this.coordinatesStatus.Size = new System.Drawing.Size(402, 15);
             this.coordinatesStatus.Text = "Overlay not active - check \"show\" box, and select some shapes to enable it.";
             // 
             // timer1
@@ -134,42 +134,41 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Draw Random Shapes";
             // 
-            // outlinedBoxCheck
+            // posShapeFour
             // 
-            this.outlinedBoxCheck.AutoSize = true;
-            this.outlinedBoxCheck.Location = new System.Drawing.Point(7, 27);
-            this.outlinedBoxCheck.Name = "outlinedBoxCheck";
-            this.outlinedBoxCheck.Size = new System.Drawing.Size(15, 14);
-            this.outlinedBoxCheck.TabIndex = 0;
-            this.outlinedBoxCheck.UseVisualStyleBackColor = true;
-            this.outlinedBoxCheck.CheckedChanged += new System.EventHandler(this.outlinedBoxCheck_CheckedChanged);
+            this.posShapeFour.AutoSize = true;
+            this.posShapeFour.Location = new System.Drawing.Point(67, 133);
+            this.posShapeFour.Name = "posShapeFour";
+            this.posShapeFour.Size = new System.Drawing.Size(29, 13);
+            this.posShapeFour.TabIndex = 12;
+            this.posShapeFour.Text = "POS";
             // 
-            // filledBoxCheck
+            // posShapeThree
             // 
-            this.filledBoxCheck.AutoSize = true;
-            this.filledBoxCheck.Location = new System.Drawing.Point(7, 65);
-            this.filledBoxCheck.Name = "filledBoxCheck";
-            this.filledBoxCheck.Size = new System.Drawing.Size(15, 14);
-            this.filledBoxCheck.TabIndex = 2;
-            this.filledBoxCheck.UseVisualStyleBackColor = true;
+            this.posShapeThree.AutoSize = true;
+            this.posShapeThree.Location = new System.Drawing.Point(67, 95);
+            this.posShapeThree.Name = "posShapeThree";
+            this.posShapeThree.Size = new System.Drawing.Size(29, 13);
+            this.posShapeThree.TabIndex = 11;
+            this.posShapeThree.Text = "POS";
             // 
-            // outlinedCircleCheck
+            // posShapeTwo
             // 
-            this.outlinedCircleCheck.AutoSize = true;
-            this.outlinedCircleCheck.Location = new System.Drawing.Point(7, 103);
-            this.outlinedCircleCheck.Name = "outlinedCircleCheck";
-            this.outlinedCircleCheck.Size = new System.Drawing.Size(15, 14);
-            this.outlinedCircleCheck.TabIndex = 4;
-            this.outlinedCircleCheck.UseVisualStyleBackColor = true;
+            this.posShapeTwo.AutoSize = true;
+            this.posShapeTwo.Location = new System.Drawing.Point(67, 57);
+            this.posShapeTwo.Name = "posShapeTwo";
+            this.posShapeTwo.Size = new System.Drawing.Size(29, 13);
+            this.posShapeTwo.TabIndex = 10;
+            this.posShapeTwo.Text = "POS";
             // 
-            // filledCircleCheck
+            // posShapeOne
             // 
-            this.filledCircleCheck.AutoSize = true;
-            this.filledCircleCheck.Location = new System.Drawing.Point(7, 141);
-            this.filledCircleCheck.Name = "filledCircleCheck";
-            this.filledCircleCheck.Size = new System.Drawing.Size(15, 14);
-            this.filledCircleCheck.TabIndex = 6;
-            this.filledCircleCheck.UseVisualStyleBackColor = true;
+            this.posShapeOne.AutoSize = true;
+            this.posShapeOne.Location = new System.Drawing.Point(67, 19);
+            this.posShapeOne.Name = "posShapeOne";
+            this.posShapeOne.Size = new System.Drawing.Size(29, 13);
+            this.posShapeOne.TabIndex = 9;
+            this.posShapeOne.Text = "POS";
             // 
             // pictureBox1
             // 
@@ -191,6 +190,15 @@
             this.pictureBox4.TabIndex = 7;
             this.pictureBox4.TabStop = false;
             // 
+            // filledCircleCheck
+            // 
+            this.filledCircleCheck.AutoSize = true;
+            this.filledCircleCheck.Location = new System.Drawing.Point(7, 141);
+            this.filledCircleCheck.Name = "filledCircleCheck";
+            this.filledCircleCheck.Size = new System.Drawing.Size(15, 14);
+            this.filledCircleCheck.TabIndex = 6;
+            this.filledCircleCheck.UseVisualStyleBackColor = true;
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Test.Properties.Resources.RedCircleOutlined;
@@ -200,6 +208,15 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
+            // 
+            // outlinedCircleCheck
+            // 
+            this.outlinedCircleCheck.AutoSize = true;
+            this.outlinedCircleCheck.Location = new System.Drawing.Point(7, 103);
+            this.outlinedCircleCheck.Name = "outlinedCircleCheck";
+            this.outlinedCircleCheck.Size = new System.Drawing.Size(15, 14);
+            this.outlinedCircleCheck.TabIndex = 4;
+            this.outlinedCircleCheck.UseVisualStyleBackColor = true;
             // 
             // pictureBox2
             // 
@@ -211,41 +228,25 @@
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
-            // posShapeOne
+            // filledBoxCheck
             // 
-            this.posShapeOne.AutoSize = true;
-            this.posShapeOne.Location = new System.Drawing.Point(67, 19);
-            this.posShapeOne.Name = "posShapeOne";
-            this.posShapeOne.Size = new System.Drawing.Size(29, 13);
-            this.posShapeOne.TabIndex = 9;
-            this.posShapeOne.Text = "POS";
+            this.filledBoxCheck.AutoSize = true;
+            this.filledBoxCheck.Location = new System.Drawing.Point(7, 65);
+            this.filledBoxCheck.Name = "filledBoxCheck";
+            this.filledBoxCheck.Size = new System.Drawing.Size(15, 14);
+            this.filledBoxCheck.TabIndex = 2;
+            this.filledBoxCheck.UseVisualStyleBackColor = true;
+            this.filledBoxCheck.CheckedChanged += new System.EventHandler(this.filledBoxCheck_CheckedChanged);
             // 
-            // posShapeTwo
+            // outlinedBoxCheck
             // 
-            this.posShapeTwo.AutoSize = true;
-            this.posShapeTwo.Location = new System.Drawing.Point(67, 57);
-            this.posShapeTwo.Name = "posShapeTwo";
-            this.posShapeTwo.Size = new System.Drawing.Size(29, 13);
-            this.posShapeTwo.TabIndex = 10;
-            this.posShapeTwo.Text = "POS";
-            // 
-            // posShapeThree
-            // 
-            this.posShapeThree.AutoSize = true;
-            this.posShapeThree.Location = new System.Drawing.Point(67, 95);
-            this.posShapeThree.Name = "posShapeThree";
-            this.posShapeThree.Size = new System.Drawing.Size(29, 13);
-            this.posShapeThree.TabIndex = 11;
-            this.posShapeThree.Text = "POS";
-            // 
-            // posShapeFour
-            // 
-            this.posShapeFour.AutoSize = true;
-            this.posShapeFour.Location = new System.Drawing.Point(67, 133);
-            this.posShapeFour.Name = "posShapeFour";
-            this.posShapeFour.Size = new System.Drawing.Size(29, 13);
-            this.posShapeFour.TabIndex = 12;
-            this.posShapeFour.Text = "POS";
+            this.outlinedBoxCheck.AutoSize = true;
+            this.outlinedBoxCheck.Location = new System.Drawing.Point(7, 27);
+            this.outlinedBoxCheck.Name = "outlinedBoxCheck";
+            this.outlinedBoxCheck.Size = new System.Drawing.Size(15, 14);
+            this.outlinedBoxCheck.TabIndex = 0;
+            this.outlinedBoxCheck.UseVisualStyleBackColor = true;
+            this.outlinedBoxCheck.CheckedChanged += new System.EventHandler(this.outlinedBoxCheck_CheckedChanged);
             // 
             // OverlaySettings
             // 
