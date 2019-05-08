@@ -1,4 +1,4 @@
-# Windows Process Manipulation Toolkit
+# MIT Windows Process Manipulation Toolkit
 C# game hacking static library for Windows. Features powerful address manipulation "WPMTK.dll", custom GDI overlay library "WOTK.dll", and best of all (are you ready for it?); entirely undetectable, extremely easy to use, without any loss in ability.
 
 ## WPMTK.dll <sup>Windows Process Manipulation Toolkit</sup>
@@ -21,6 +21,3 @@ _You can find this .pdf file in the folder with the DLLs, called "readme.pdf"._
 # For Help With Documentation
 * Hover over our method names and there should be some useful information about what it does and what it requires.
 * To browse our documentation, we release the DLL files with each their own (besides VAMemory.dll) an .xml file. The .xml file contains all of the documentation of the library and it's functions.
-
-# Contact Us
-If you would like to send feedback, report a bug, or for business inquires, please contact us at [sistemiinferno@gmail.com](sistemiinferno@gmail.com). Thank you.
