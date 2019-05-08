@@ -11,7 +11,7 @@ The WOTK library enables you to create complex overlays for your Windows desktop
 
 ### The WOTK library comes with:
 * Complex drawing algorithms like beziers, polygons, and text.
-* Complete undetectability, because of the way we developed it.
+* Complete undetectability, because graphics are rendered in a transparent overlay application.
 
 # Tutorial
 If you're looking for a place to get started, I've written a .pdf packaged with the DLL files with a little bit of information about them, and how to create a new project and set it up.
